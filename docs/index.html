@@ -67,15 +67,122 @@
              data-background-repeat="repeat"
              data-background-opacity=".15">
 
-      <section data-background-image="./themes/Pattern-7-outline.svg"
+      <section data-auto-animate
+               data-background-image="./themes/Pattern-7-outline.svg"
                data-background-size="300px"
                data-background-repeat="repeat"
                data-background-opacity=".4">
-        <h1>Was heißt</br>cloud-native?</h1>
+        <h1>Was ist cloud-native?</h1>
       </section>
 
-      <section>
-        <h2>More...</h2>
+      <section data-auto-animate>
+        <h1>Was ist cloud-native?</h1>
+        <h3>→ Was ist die Cloud?</h3>
+        <aside class="notes">
+          <ul>
+            <li>Viele denken zwingend an public cloud</li>
+            <ul>
+              <li>dauerhafte Verbindung zum Internet?</li>
+            </ul>
+            <li>Auch Varianten: Private Cloud, Hybrid Cloud</li>
+            <li>Wir sehen es hier als: Platform as a Service</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section data-auto-animate="">
+        <ul>
+          <li>Platform as a Service</li>
+        </ul>
+        <aside class="notes">
+          <ul>
+            <li>Unterschiedliche Level der Verantwortlichkeiten auf denen sich Unternehmen bewegen
+              können
+            </li>
+            <li>Cloud betrachten wir hier als PAAS</li>
+            <li>PAAS: Alles benötigte zum Entwicklen von Anwendungen</li>
+            <li>Ohne Aktualisierung von Betriebssystem oder Wartung der Hardware</li>
+            <li>Unternehmen können eigene private PAAS aufbauen mit IAAS</li>
+            <li></li>
+          </ul>
+        </aside>
+      </section>
+
+      <section data-auto-animate="">
+        <ul>
+          <li>Platform as a Service</li>
+          <li>Infrastructure as a Service</li>
+        </ul>
+        <aside class="notes">
+          <ul>
+            <li>IAAS: On-Demand Infrastruktur</li>
+            <li>keine eigenen Rechenzentrumsinfrastruktur, aber Betriebssystem, die Middleware,
+              die virtuellen Maschinen
+            </li>
+          </ul>
+        </aside>
+      </section>
+
+      <section data-auto-animate="">
+        <ul>
+          <li>Software as a Service</li>
+          <li>Platform as a Service</li>
+          <li>Infrastructure as a Service</li>
+        </ul>
+        <aside class="notes">
+          <ul>
+            <li>SAAS: von Hardware bis Anwendung</li>
+            <li>Nutzer können sich einfach direkt mit Anwendung verbinden</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section data-auto-animate>
+        <h3>Was ist die Cloud?</h3>
+      </section>
+
+      <section data-auto-animate>
+        <h3>Was ist die Cloud?</h3>
+        <h5>Platform as a Service</h5>
+      </section>
+
+      <section data-auto-animate>
+        <h3>Was ist die Cloud?</h3>
+        <h5>Platform as a Service</h5>
+        </br>
+        <h3>→ Was ist cloud-nativ?</h3>
+        <aside class="notes">
+          <ul>
+            <li>Native Software für Platform as a Service?</li>
+            <li>Kann nur neue Software wirklich cloud-native sein?</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section data-auto-animate>
+        <h3>Was ist die Cloud?</h3>
+        <h5>Platform as a Service</h5>
+        </br>
+        <h3>→ <s>Was ist cloud-nativ?</s></h3>
+        <h3>→ Was ist cloud-ready?</h3>
+      </section>
+
+      <section data-auto-animate>
+        <h3>Was ist die Cloud?</h3>
+        <h5>Platform as a Service</h5>
+        </br>
+        <h3>→ <s>Was ist cloud-nativ?</s></h3>
+        <h3>→ Was ist cloud-ready?</h3>
+        <h5>Anwendungen, die für die Ausführung in PAAS</br>geeignet sind</h5>
+      </section>
+
+      <section data-auto-animate>
+        <h3>Was ist die Cloud?</h3>
+        <h5>Platform as a Service</h5>
+        </br>
+        <h3>→ <s>Was ist cloud-nativ?</s></h3>
+        <h3>→ Was ist cloud-ready? ✓</h3>
+        <h5>Anwendungen, die für die Ausführung in PAAS</br>geeignet sind</h5>
       </section>
 
     </section>
@@ -92,10 +199,101 @@
                data-background-repeat="repeat"
                data-background-opacity=".4">
         <h1>Warum</br>cloud-native?</h1>
+        <aside class="notes">
+          <ul>
+            <li>Gab doch vorher schon Software, wieso jetzt mit PAAS?</li>
+          </ul>
+        </aside>
       </section>
 
       <section>
-        <h2>More...</h2>
+        <h2>Wie sieht es ohne aus?</h2>
+      </section>
+
+      <section data-auto-animate="">
+        <h2>Wie sieht es ohne aus?</h2>
+        <ol>
+          <li>Rechenzentrum / Hardware / Server</li>
+          <li>Eigenes Deployen der Anwendung</li>
+          <ul>
+            <li>zeitaufwändig</li>
+            <li>fehleranfällig</li>
+            <li>fehlende Vorhersagekraft</li>
+            <li>hohe Downtimes</li>
+          </ul>
+        </ol>
+        <aside class="notes">
+          <ul>
+            <li>Eigene Updates, Betriebssysteme verwalten, Hardware reparieren</li>
+            <li>Netzwerk und Sicherheitsaspekte</li>
+            <li>Manuelles Deployment der Anwendung</li>
+            <li>Application Failures bei Hardware Änderungen</li>
+            <li>Hypervisor haben hier schon viel geholfen</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section data-auto-animate="">
+        <h2>Wie sieht es ohne aus?</h2>
+        <ol>
+          <small>
+            <li>Rechenzentrum / Hardware / Server</li>
+            <li>Eigenes Deployen der Anwendung</li>
+            <ul>
+              <li>zeitaufwändig</li>
+              <li>fehleranfällig</li>
+              <li>fehlende Vorhersagekraft</li>
+              <li>hohe Downtimes</li>
+            </ul>
+          </small>
+          <li>Hohe Time To Market</li>
+          <li>Keine Lastskalierung</li>
+          <li>Kosten auch bei Nicht-Gebrauch</li>
+          <li>Kein Fokus allein auf Anwendung</li>
+        </ol>
+        <aside class="notes">
+          <ul>
+            <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
+            <li>zusätzlich auf Grund Risiko + Zeit seltene Releases</li>
+            <li>Unternehmen: Ich möchte eine Sache können und diese besser als Andere machen</li>
+          </ul>
+        </aside>
+      </section>
+
+
+      <section data-auto-animate="">
+        <h1>Warum</br>cloud-native?</h1>
+      </section>
+
+      <section data-auto-animate="">
+        <h1>Warum</br>cloud-native?</h1>
+        <ul>
+          <li>Skalierbar</li>
+          <li>Kurze Time To Market</li>
+          <li>Resilienz</li>
+          <li>Observierbar</li>
+        </ul>
+        <aside class="notes">
+          <ul>
+            <li>Viele Frameworks, Features sind dafür da um SAAS zu enablen</li>
+            <li>DevOps Kultur, Service Oriented Architecture, Automatisierung, CI/CD, Container,
+              ...
+            </li>
+          </ul>
+        </aside>
+      </section>
+
+      <section data-auto-animate="">
+        <h1>Warum</br>cloud-native?</h1>
+        <ul>
+          <li>Skalierbar</li>
+          <li>Kurze Time To Market</li>
+          <li>Resilienz</li>
+          <li>Observierbar</li>
+        </ul>
+        </br>
+        </br>
+        <h5>... kein Begeisterungsfaktoren mehr, sondern Standard</h5>
       </section>
 
     </section>
@@ -107,17 +305,56 @@
              data-background-repeat="repeat"
              data-background-opacity=".15">
 
-      <section data-background-image="./themes/Pattern-9-outline.svg"
+      <section data-auto-animate=""
+               data-background-image="./themes/Pattern-9-outline.svg"
                data-background-size="300px"
                data-background-repeat="repeat"
                data-background-opacity=".4">
         <h1>Cloud-native </br> in der Entwicklung?</h1>
       </section>
 
-      <section>
-        <h2>Kontrastbeispiel RPS API</h2>
+      <section data-auto-animate="">
+        <h1>Cloud-native </br> in der Entwicklung?</h1>
+        <h4>
+          2012 -
+          <a href="https://12factor.net/de/">
+            The Twelve Factor App
+          </a>
+        </h4>
+        </br>
+        <aside class="notes">
+          <ul>
+            <li>Gruppe von Leuten aus Heroku</li>
+            <li>Festlegen von Standards für die Entwicklung</li>
+            <li>Weitergabe von Best Practices</li>
+          </ul>
+        </aside>
       </section>
 
+      <section data-auto-animate="">
+        <h1>Cloud-native </br> in der Entwicklung?</h1>
+        <h4>
+          2012 -
+          <a href="https://12factor.net/de/">
+            The Twelve Factor App
+          </a>
+        </h4>
+        </br>
+        <h4>
+          2016 -
+          <a href="https://tanzu.vmware.com/content/blog/beyond-the-twelve-factor-app">
+            Beyond the Twelve Factor App
+          </a>
+        </h4>
+        <aside class="notes">
+          <ul>
+            <li>Weiterentwicklung von Frameworks: Ausformulierung bestimmter Punkte</li>
+            <li>Hinzunahme weiterer Punkte</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- ÜBERSICHT ASPEKTE -->
       <section>
         <h2>The 12-Factor-App <small>and Beyond</small></h2>
         <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
@@ -149,25 +386,26 @@
 
     </section>
 
-
-    <!-- ÜBERSICHT ASPEKTE -->
-
     <!-- VOTING -->
     <section data-background-image="./themes/Pattern-1-outline.svg"
              data-background-size="300px"
              data-background-repeat="repeat"
              data-background-opacity=".4">
-        <div
-            style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
-          <iframe sandbox='allow-scripts allow-same-origin allow-presentation'
-                  allowfullscreen='true' allowtransparency='true' frameborder='0' height='315'
-                  src='https://www.mentimeter.com/app/presentation/al6m3wiyraw27f8hz75sorfnter5f4f4/embed'
-                  style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'
-                  width='420'></iframe>
-        </div>
+      <div
+          style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
+        <iframe sandbox='allow-scripts allow-same-origin allow-presentation'
+                allowfullscreen='true' allowtransparency='true' frameborder='0' height='315'
+                src='https://www.mentimeter.com/app/presentation/al6m3wiyraw27f8hz75sorfnter5f4f4/embed'
+                style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'
+                width='420'></iframe>
+      </div>
     </section>
 
     <!-- WEITERE NOTES FÜR ASPEKTE -->
+
+    <section>
+      <h2>Beispiel: Aufbau RPS API</h2>
+    </section>
 
     <!-- END -->
     <section data-background-image="./themes/Pattern-11-outline.svg"
@@ -531,7 +769,6 @@
 
 <script>
   Reveal.initialize({
-    slideNumber: 'c',
     transition: "slide",
     pdfSeparateFragments: false,
     navigationMode: "linear",
