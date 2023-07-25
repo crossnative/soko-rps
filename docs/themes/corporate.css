@@ -124,7 +124,7 @@ section.has-light-background h6 {
 }
 
 .reveal h1 {
-  font-size: 2.3em;
+  font-size: 1.9em;
   text-shadow: none;
 }
 
@@ -142,10 +142,12 @@ section.has-light-background h6 {
 
 .reveal h5 {
   font-size: 0.8em;
+  font-weight: 500;
 }
 
 .reveal h6 {
   font-size: 0.6em;
+  font-weight: 300;
 }
 
 /*********************************************
