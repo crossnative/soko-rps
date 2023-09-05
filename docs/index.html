@@ -1,872 +1,1015 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8"
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8"
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
-  <title>Rock, Paper, Scissors | Cloudland</title>
+    <title>Rock, Paper, Scissors | Cloudland</title>
 
-  <link rel="stylesheet" href="./assets/node_modules/reveal.js/dist/reset.css"/>
-  <link rel="stylesheet" href="./assets/node_modules/reveal.js/dist/reveal.css"/>
-  <link rel="stylesheet" href="./assets/tailwind.min.css"/>
+    <link rel="stylesheet" href="./assets/node_modules/reveal.js/dist/reset.css"/>
+    <link rel="stylesheet" href="./assets/node_modules/reveal.js/dist/reveal.css"/>
+    <link rel="stylesheet" href="./assets/tailwind.min.css"/>
 
-  <link rel="stylesheet" href="./themes/corporate.css" id="theme"/>
-  <link rel="stylesheet" href="./themes/tomorrow-night.css" id="highlight-theme"/>
+    <link rel="stylesheet" href="./themes/corporate.css" id="theme"/>
+    <link rel="stylesheet" href="./themes/tomorrow-night.css" id="highlight-theme"/>
 </head>
 
 <body>
 <div class="reveal">
-  <div class="slides">
+    <div class="slides">
 
-    <!-- TITLE PAGE -->
-    <section data-background-image="./themes/Pattern-11-outline.svg"
-             data-background-size="400px"
-             data-background-repeat="repeat"
-             data-background-opacity=".4">
-      <h1>Cutting through </br>Cloud-Native Complexity</h1>
-      <h4>... with Rock, Paper, Scissors</h4>
-      <aside class="notes">
-        <ul>
-          <li>Vorstellung: Wer sind wir?</li>
-          <li>Outline: Worum wird es in dem Vortrag gehen?</li>
-          <ul>
-            <li>Workshop, den wir auf der Cloudland gehalten haben</li>
-            <li>Cloud-Anwendungen: Was ist das? Warum? Wie?</li>
-            <li>Beyond 12 Factors</li>
-            <li>Beispiele aus Rock-Paper-Scissors API: Wie setzte ich das um?</li>
-            <ul>
-              <li>Für Go und für Spring</li>
-            </ul>
-          </ul>
-        </ul>
-      </aside>
-    </section>
+        <!-- TITLE PAGE -->
+        <section data-background-image="./themes/Pattern-11-outline.svg"
+                 data-background-size="400px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".4">
+            <h1>Cutting through </br>Cloud-Native Complexity</h1>
+            <h4>... with Rock, Paper, Scissors</h4>
+            <aside class="notes">
+                <ul>
+                    <li>Titel: Näher bringen was es bedeutet cloud-native zu sein</li>
+                    <li>Laufbeispiel einer Rock, Paper, Scissors Anwendung</li>
+                    <li>Disclaimer: Aus Erfahrungen, ihr habt da mit Sicherheit auch noch weiteren Input</li>
+                    <li>Eigene Erfahrungen im Anschluss noch diskutieren</li>
+                </ul>
+            </aside>
+        </section>
 
-    <!-- QR Code -->
-    <section data-background-image="./themes/Pattern-11-outline.svg"
-             data-background-size="400px"
-             data-background-repeat="repeat"
-             data-background-opacity=".15">
-      <img src="./themes/qr-code.png" width="400px" style="margin: auto;">
-      <br>
-      <h5>ppi-x.gitlabpages.ppidev.net</br>/talks/soko-23-rock-paper-scissors</h5>
-      <aside class="notes">
-        <ul>
-          <li>Link zu Slides</li>
-          <li>Direkt verfügbar</li>
-          <li>Zugriff auf Referenzen</li>
-        </ul>
-      </aside>
-    </section>
-
-
-    <!-- BEGRIFF: CLOUD-NATIVE -->
-    <section data-background-image="./themes/Pattern-7-outline.svg"
-             data-background-size="300px"
-             data-background-repeat="repeat"
-             data-background-opacity=".15">
-
-      <section data-auto-animate
-               data-background-image="./themes/Pattern-7-outline.svg"
-               data-background-size="300px"
-               data-background-repeat="repeat"
-               data-background-opacity=".4">
-        <h1>Was ist cloud-native?</h1>
-      </section>
-
-      <section data-auto-animate>
-        <h1>Was ist cloud-native?</h1>
-        <h3>→ Was ist die Cloud?</h3>
-        <aside class="notes">
-          <ul>
-            <li>Viele denken zwingend an public cloud</li>
-            <ul>
-              <li>dauerhafte Verbindung zum Internet?</li>
-            </ul>
-            <li>Auch Varianten: Private Cloud, Hybrid Cloud</li>
-            <li>Wir sehen es hier als: Platform as a Service</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate="">
-        <ul>
-          <li>Platform as a Service (PAAS)</li>
-        </ul>
-        <aside class="notes">
-          <ul>
-            <li>Unterschiedliche Level der Verantwortlichkeiten auf denen sich Unternehmen bewegen
-              können
-            </li>
-            <li>Cloud betrachten wir hier als PAAS</li>
-            <li>PAAS: Alles benötigte zum Entwicklen von Anwendungen</li>
-            <li>Ohne Aktualisierung von Betriebssystem oder Wartung der Hardware</li>
-            <li>Unternehmen können eigene private PAAS aufbauen mit IAAS</li>
-            <li></li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate="">
-        <ul>
-          <li>Platform as a Service (PAAS)</li>
-          <li>Infrastructure as a Service (IAAS)</li>
-        </ul>
-        <aside class="notes">
-          <ul>
-            <li>IAAS: On-Demand Infrastruktur</li>
-            <li>keine eigenen Rechenzentrumsinfrastruktur, aber Betriebssystem, die Middleware,
-              die virtuellen Maschinen
-            </li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate="">
-        <ul>
-          <li>Software as a Service (SAAS)</li>
-          <li>Platform as a Service (PAAS)</li>
-          <li>Infrastructure as a Service (IAAS)</li>
-        </ul>
-        <aside class="notes">
-          <ul>
-            <li>SAAS: von Hardware bis Anwendung</li>
-            <li>Nutzer können sich einfach direkt mit Anwendung verbinden</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate>
-        <h3>Was ist die Cloud?</h3>
-      </section>
-
-      <section data-auto-animate>
-        <h3>Was ist die Cloud?</h3>
-        <h5>Platform as a Service</h5>
-      </section>
-
-      <section data-auto-animate>
-        <h3>Was ist die Cloud?</h3>
-        <h5>Platform as a Service</h5>
-        </br>
-        <h3>→ Was ist cloud-nativ?</h3>
-        <aside class="notes">
-          <ul>
-            <li>Native Software für Platform as a Service?</li>
-            <li>Kann nur neue Software wirklich cloud-native sein?</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate>
-        <h3>Was ist die Cloud?</h3>
-        <h5>Platform as a Service</h5>
-        </br>
-        <h3>→ <s>Was ist cloud-nativ?</s></h3>
-        <h3>→ Was ist cloud-ready?</h3>
-      </section>
-
-      <section data-auto-animate>
-        <h3>Was ist die Cloud?</h3>
-        <h5>Platform as a Service</h5>
-        </br>
-        <h3>→ <s>Was ist cloud-nativ?</s></h3>
-        <h3>→ Was ist cloud-ready?</h3>
-        <h5>Anwendungen geeignet für PAAS</h5>
-        <aside class="notes">
-          <ul>
-            <li>Noch immer wenig greifbar</li>
-            <li>Wann ist eine Anwendung geeignet, was macht sie geeignet?</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate>
-        <h3>Was ist die Cloud?</h3>
-        <h5>Platform as a Service</h5>
-        </br>
-        <h3>→ <s>Was ist cloud-nativ?</s></h3>
-        <h3>→ Was ist cloud-ready? ✓</h3>
-        <h5>Anwendungen geeignet für PAAS</h5>
-      </section>
-
-    </section>
-
-
-    <!-- WARUM CLOUD-NATIVE -->
-    <section data-background-image="./themes/Pattern-14-outline.svg"
-             data-background-size="300px"
-             data-background-repeat="repeat"
-             data-background-opacity=".15">
-
-      <section data-background-image="./themes/Pattern-14-outline.svg"
-               data-background-size="300px"
-               data-background-repeat="repeat"
-               data-background-opacity=".4">
-        <h1>Warum</br>cloud-native?</h1>
-        <aside class="notes">
-          <ul>
-            <li>Gab doch vorher schon Software, wieso jetzt mit PAAS?</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section>
-        <h2>Wie sieht es ohne aus?</h2>
-      </section>
-
-      <section data-auto-animate="">
-        <h2>Wie sieht es ohne aus?</h2>
-        <ol>
-          <li>Rechenzentrum / Hardware / Server</li>
-          <li>Eigenes Deployen der Anwendung</li>
-          <ul>
-            <li>zeitaufwändig</li>
-            <li>fehleranfällig</li>
-            <li>fehlende Vorhersagekraft</li>
-            <li>hohe Downtimes</li>
-          </ul>
-        </ol>
-        <aside class="notes">
-          <ul>
-            <li>Eigene Updates, Betriebssysteme verwalten, Hardware reparieren</li>
-            <li>Netzwerk und Sicherheitsaspekte</li>
-            <li>Manuelles Deployment der Anwendung</li>
-            <li>Application Failures bei Hardware Änderungen</li>
-            <li>Hypervisor haben hier schon viel geholfen</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate="">
-        <h2>Wie sieht es ohne aus?</h2>
-        <ol>
-          <small>
-            <li>Rechenzentrum / Hardware / Server</li>
-            <li>Eigenes Deployen der Anwendung</li>
-            <ul>
-              <li>zeitaufwändig</li>
-              <li>fehleranfällig</li>
-              <li>fehlende Vorhersagekraft</li>
-              <li>hohe Downtimes</li>
-            </ul>
-          </small>
-          <li>Hohe Time To Market</li>
-          <li>Keine Lastskalierung</li>
-          <li>Kosten auch bei Nicht-Gebrauch</li>
-          <li>Kein Fokus allein auf Anwendung</li>
-        </ol>
-        <aside class="notes">
-          <ul>
-            <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
-            <li>zusätzlich auf Grund Risiko + Zeit seltene Releases</li>
-            <li>Unternehmen: Ich möchte eine Sache können und diese besser als Andere machen</li>
-          </ul>
-        </aside>
-      </section>
-
-
-      <section data-auto-animate="">
-        <h1>Warum</br>cloud-native?</h1>
-      </section>
-
-      <section data-auto-animate="">
-        <h1>Warum</br>cloud-native?</h1>
-        <ul>
-          <li>Skalierbar</li>
-          <li>Kurze Time To Market</li>
-          <li>Resilienz</li>
-          <li>Beobachtbarkeit</li>
-        </ul>
-        <aside class="notes">
-          <ul>
-            <li>Viele Frameworks, Features sind dafür da um SAAS zu enablen</li>
-            <li>DevOps Kultur, Service Oriented Architecture, Automatisierung, CI/CD, Container,
-              ...
-            </li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate="">
-        <h1>Warum</br>cloud-native?</h1>
-        <ul>
-          <li>Skalierbar</li>
-          <li>Kurze Time To Market</li>
-          <li>Resilienz</li>
-          <li>Beobachtbarkeit</li>
-        </ul>
-        </br>
-        </br>
-        <h5>... kein Begeisterungsfaktoren mehr, sondern Standard</h5>
-      </section>
-
-    </section>
-
-
-    <!-- CLOUD-NATIVE IN DER ENTWICKLUNG -->
-    <section data-background-image="./themes/Pattern-9-outline.svg"
-             data-background-size="300px"
-             data-background-repeat="repeat"
-             data-background-opacity=".15">
-
-      <section data-auto-animate=""
-               data-background-image="./themes/Pattern-9-outline.svg"
-               data-background-size="300px"
-               data-background-repeat="repeat"
-               data-background-opacity=".4">
-        <h1>Cloud-native </br> in der Entwicklung?</h1>
-      </section>
-
-      <section data-auto-animate="">
-        <h1>Cloud-native </br> in der Entwicklung?</h1>
-        <h4>
-          2012 -
-          <a href="https://12factor.net/de/">
-            The Twelve Factor App
-          </a>
-        </h4>
-        </br>
-        <aside class="notes">
-          <ul>
-            <li>Gruppe von Leuten aus Heroku</li>
-            <li>Festlegen von Standards für die Entwicklung</li>
-            <li>Festlegen von Bedeutungen für Worte</li>
-            <li>Weitergabe von Best Practices</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section data-auto-animate="">
-        <h1>Cloud-native </br> in der Entwicklung?</h1>
-        <h4>
-          2012 -
-          <a href="https://12factor.net/de/">
-            The Twelve Factor App
-          </a>
-        </h4>
-        </br>
-        <h4>
-          2016 -
-          <a href="https://tanzu.vmware.com/content/blog/beyond-the-twelve-factor-app">
-            Beyond the Twelve Factor App
-          </a>
-        </h4>
-        <aside class="notes">
-          <ul>
-            <li>Weiterentwicklung von Frameworks: Ausformulierung bestimmter Punkte</li>
-            <li>Hinzunahme weiterer Punkte</li>
-          </ul>
-        </aside>
-      </section>
-
-      <!-- ÜBERSICHT ASPEKTE -->
-      <section>
-        <h2>The 12-Factor-App <small>and Beyond</small></h2>
-        <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
-          <div class="col-span-6">
-            <ol>
-              <li>One Codebase, One App</li>
-              <li>API First</li>
-              <li>Dependency Management</li>
-              <li>Design, Build, Release, Run</li>
-              <li>Configuration, Credentials and Code</li>
-              <li>Logs</li>
-              <li>Disposability</li>
-            </ol>
-          </div>
-          <div class="col-span-6">
-            <ol start="8">
-              <li>Backing Services</li>
-              <li>Environment Parity</li>
-              <li>Administrative Processes</li>
-              <li>Port Binding</li>
-              <li>Stateless Processes</li>
-              <li>Concurrency</li>
-              <li>Telemetry</li>
-              <li>Authentication and Authorization</li>
-            </ol>
-          </div>
-        </div>
-        <aside class="notes">
-          <ul>
-            <li>Bei den Punkten nichts zu sehr ins Detail gehen</li>
-            <li>Punkte setzen Fokus auf einen Aspekt</li>
-            <li>Füttern sich gegenseitig, Einhaltung eines erleichtert Einhaltug anderer</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section>
-        <h2>Example: </br>Rock, Paper, Scissors API</h2>
-        <img src="./themes/rps-architecture.png"/>
-        <aside class="notes">
-          <ul>
-            <li>Angular Frontend bereitgestellt</li>
-            <li>Angabe eines Backends, welches API implementiert</li>
-            <li>Backends sind agnostisch, Beispiele für GO und für Spring</li>
-          </ul>
-        </aside>
-      </section>
-    </section>
-
-    <!-- VOTING -->
-    <section data-background-image="./themes/Pattern-1-outline.svg"
-             data-background-size="300px"
-             data-background-repeat="repeat"
-             data-background-opacity=".4">
-      <div
-          style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
-        <iframe sandbox='allow-scripts allow-same-origin allow-presentation'
-                allowfullscreen='true' allowtransparency='true' frameborder='0' height='315'
-                src='https://www.mentimeter.com/app/presentation/al6m3wiyraw27f8hz75sorfnter5f4f4/embed'
-                style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'
-                width='420'></iframe>
-      </div>
-    </section>
-
-
-    <section>
-
-      <section id="factors">
-        <h2>Mehr Infos für...</h2>
-        <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
-          <div class="col-span-6">
-            <ol>
-              <li><a href="#/one-codebase-one-app">One Codebase, One App</a></li>
-              <li><a href="#/api-first">API First</a></li>
-              <li><a href="#/dependency-management">Dependency Management</a></li>
-              <li><a href="#/design-build-release-run">Design, Build, Release, Run</a></li>
-              <li><a href="#/configuration-credentials-and-code">Configuration, Credentials and
-                Code</a></li>
-              <li><a href="#/logs">Logs</a></li>
-              <li><a href="#/disposability">Disposability</a></li>
-            </ol>
-          </div>
-          <div class="col-span-6">
-            <ol start="8">
-              <li><a href="#/backing-services">Backing Services</a></li>
-              <li><a href="#/environment-parity">Environmnet Parity</a></li>
-              <li><a href="#/administrative-processes">Administrative Processes</a></li>
-              <li><a href="#/port-binding">Port Binding</a></li>
-              <li><a href="#/stateless-processes">Stateless Processes</a></li>
-              <li><a href="#/concurrency">Concurrency</a></li>
-              <li><a href="#/telemetry">Telemetry</a></li>
-              <li><a href="#/authentication-and-authorization">Authentication and Authorization</a>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-    </section>
-
-    <!-- PATH: GO CLOUD NATIVE -->
-    <!--    <section>-->
-
-    <!--      &lt;!&ndash;-->
-    <!--      <section id="go-cloud-native-path">-->
-    <!--        <h2>Go Cloud Native Path</h2>-->
-    <!--        <div class="grid grid-cols-12 gap-1 content-start">-->
-    <!--          <div class="col-span-6">-->
-    <!--            <ul>-->
-    <!--              <li><a href="#/cheat-go-port-from-env">Configure Port from Environment Variable</a>-->
-    <!--              </li>-->
-    <!--              <li><a href="#/cheat-go-handle-errors">Handle Errors properly</a></li>-->
-    <!--              <li><a href="#/cheat-go-middleware-logging-recovery">Middleware for Logging and-->
-    <!--                Recovery</a></li>-->
-    <!--              <li><a href="#/cheat-go-health-check">Add a Health Check</a></li>-->
-    <!--            </ul>-->
-    <!--          </div>-->
-    <!--          <div class="col-span-6">-->
-    <!--            <ul>-->
-    <!--              <li><a href="#/cheat-go-run-in-container">Run in Container</a></li>-->
-    <!--              <li><a href="#/cheat-go-postgres-storage">Use PostgreSQL for Storage</a></li>-->
-    <!--              <li><a href="#/cheat-go-cloud-deployment">Deploy to the cloud</a></li>-->
-    <!--              <li><a href="#/cheat-go-opentelemetry">Add OpenTelemetry</a></li>-->
-    <!--              <li>...</li>-->
-    <!--            </ul>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </section>-->
-    <!--      &ndash;&gt;-->
-
-
-    <!--      <section id="cheat-go-handle-errors">-->
-    <!--        <h2><small>Cheatsheet</small> Handle Errors properly</h2>-->
-    <!--        <h4 class="cross-red">Using the Standard Library</h4>-->
-    <!--        <pre style="font-size: 0.44em;"><code data-trim data-noescape class="go">-->
-    <!--                  if err != nil {-->
-    <!--                    http.Error(w, "Oops, that went wrong!", http.StatusInternalServerError)-->
-    <!--                    return-->
-    <!--                  }-->
-    <!--                </code></pre>-->
-    <!--        <h4 class="cross-red">Using Problem for HTTP APIs</h4>-->
-    <!--        Use <a href=" https://www.rfc-editor.org/rfc/rfc7807">rfc7807</a> with <code>schneider.vip/problem</code>-->
-    <!--        <pre style="font-size: 0.44em;"><code data-trim data-noescape class="go">-->
-    <!--                  if err != nil {-->
-    <!--                    problem.New(-->
-    <!--                    problem.Wrap(err),-->
-    <!--                    problem.Status(http.StatusInternalServerError)-->
-    <!--                    ).WriteTo(w)-->
-    <!--                    return-->
-    <!--                  }        </code></pre>-->
-    <!--      </section>-->
-    <!--      <section id="cheat-go-run-in-container">-->
-    <!--        <h2><small>Cheatsheet</small> Run in Container</h2>-->
-    <!--        <pre style="font-size: 0.44em;"><code data-trim data-noescape>-->
-    <!--                    # 1. RPS Builder-->
-    <!--                    FROM golang as builder-->
-    <!--                    WORKDIR /app-->
-    <!--                    ADD . /app-->
-    <!--                    RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o build/rps .-->
-
-    <!--                    # 2. RPS Container-->
-    <!--                    FROM gcr.io/distroless/static-->
-    <!--                    COPY &#45;&#45;from=builder /app/build/rps /usr/bin/-->
-    <!--                    EXPOSE 8080-->
-    <!--                    ENTRYPOINT ["/usr/bin/rps"]-->
-    <!--                  </code></pre>-->
-    <!--      </section>-->
-    <!--      <section id="cheat-go-health-check">-->
-    <!--        <h2><small>Cheatsheet</small> Add a Health Check</h2>-->
-    <!--        See <code>github.com/hellofresh/health-go/v5</code>.-->
-    <!--        <pre style="font-size: 0.44em;"><code data-trim data-noescape class="go">-->
-    <!--                    // Register Health Check-->
-    <!--                    h, _ := health.New(health.WithChecks(-->
-    <!--                    health.Config{-->
-    <!--                      Name:      "db",-->
-    <!--                      Timeout:   time.Second * 2,-->
-    <!--                      SkipOnErr: false,-->
-    <!--                      Check: healthPgx.New(healthPgx.Config{-->
-    <!--                        DSN: config.Db,-->
-    <!--                      }),-->
-    <!--                    },-->
-    <!--                    ))-->
-
-    <!--                    // Register Health Check Handler Function-->
-    <!--                    r.Get("/health", h.HandlerFunc)-->
-    <!--                  </code></pre>-->
-    <!--      </section>-->
-    <!--      <section id="cheat-go-postgres-storage">-->
-    <!--        <h2><small>Cheatsheet</small> Use PostgreSQL for Storage</h2>-->
-    <!--        <ul>-->
-    <!--          <li><a href="https://www.sohamkamani.com/golang/sql-database/">SQL Tutorial with Go</a>-->
-    <!--          </li>-->
-    <!--          <li><a href="https://github.com/jackc/pgx">PostgreSQL Driver PGX</a></li>-->
-    <!--          <li>Sample application <a href="https://github.com/remast/dogop/blob/main/offer.go"><code>offer</code></a>-->
-    <!--          </li>-->
-    <!--        </ul>-->
-    <!--      </section>-->
-    <!--      <section id="cheat-cloud-deployment">-->
-    <!--        <h2><small>Cheatsheet</small> Cloud Deployment</h2>-->
-    <!--        Example Deployment for <a href="https://render.com/">render</a>-->
-    <!--        <pre style="font-size: 0.44em;"><code data-trim data-noescape>-->
-    <!--                    services:-->
-    <!--                    - type: web-->
-    <!--                    name: backend-go-->
-    <!--                    env: go-->
-    <!--                    plan: free-->
-    <!--                    rootDir: backend-go-->
-    <!--                    buildCommand: go build -o rps .-->
-    <!--                    startCommand: ./rps-->
-    <!--                  </code></pre>-->
-    <!--      </section>-->
-    <!--      <section id="cheat-go-opentelemetry">-->
-    <!--        <h2><small>Cheatsheet</small> OpenTelemetry</h2>-->
-    <!--        Use <a href="https://github.com/riandyrn/otelchi">otelchi</a>-->
-    <!--      </section>-->
-    <!--    </section>-->
-
-    <!-- PATH: SPRING CLOUD NATIVE -->
-    <!--    <section id="spring-cloud-native-path">-->
-    <!--      <h2>Spring Cloud Native Path</h2>-->
-    <!--      <div class="grid grid-cols-12 gap-1 content-start">-->
-    <!--        <div class="col-span-6">-->
-    <!--          <ul>-->
-    <!--            <li><a href="https://www.baeldung.com/spring-boot-properties-env-variables">Configurable-->
-    <!--              Application Port</a></li>-->
-    <!--            <li><a href="#/cheat-spring-error-handling">Improve Error Handling</a></li>-->
-    <!--            <li><a href="https://www.baeldung.com/spring-boot-logging">Configure proper-->
-    <!--              Logging</a></li>-->
-    <!--            <li><a href="https://www.baeldung.com/spring-boot-actuators">Health Check</a></li>-->
-    <!--          </ul>-->
-    <!--        </div>-->
-    <!--        <div class="col-span-6">-->
-    <!--          <ul>-->
-    <!--            <li><a href="#/cheat-spring-run-in-container">Run in Container</a></li>-->
-    <!--            <li><a href="https://www.baeldung.com/spring-boot-postgresql-docker">Use Database for-->
-    <!--              persistence</a></li>-->
-    <!--            <li><a-->
-    <!--                href="https://github.com/crossnative/cloudland-rps/blob/spring-start/render.yaml">Deploy-->
-    <!--              to the Cloud</a></li>-->
-    <!--            <li><a-->
-    <!--                href="https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native">Add-->
-    <!--              OpenTelemetry</a></li>-->
-    <!--            <li>...</li>-->
-    <!--          </ul>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </section>-->
-
-
-    <!-- END -->
-    <section data-background-image="./themes/Pattern-11-outline.svg"
-             data-background-size="400px"
-             data-background-repeat="repeat"
-             data-background-opacity=".4">
-
-      <!-- PERSONS -->
-      <section>
-        <div class="grid grid-cols-3 gap-1 text-left">
-          <div style="margin-left: auto; margin-right: 2rem">
-            <img
-                src="./themes/JanStamer_profil_schmal.png"
-                class="object-scale-down"
-                style="margin-top: 0; height: 12rem"
-            />
-          </div>
-          <div>
-            <h2 style="margin-bottom: 0; font-size: 100%">Jan Stamer</h2>
-            <div style="margin-bottom: 1rem">
-              <a
-                  href="mailto:jan.stamer@crossnative.com"
-                  style="font-size: 60%"
-              >jan.stamer@crossnative.com</a
-              >
-            </div>
-            <div class="grid grid-cols-4 gap-1 text-left">
-              <div>
-                <a href="https://www.linkedin.com/in/jan-stamer">
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="48"
-                      height="48"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z"/>
-                    <path
-                        d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"
-                        fill="rgba(255,255,255,1)"
+        <!-- PERSONS -->
+        <section>
+            <div class="grid grid-cols-3 gap-1 text-left">
+                <div style="margin-left: auto; margin-right: 2rem">
+                    <img
+                            src="./themes/LenaGrimm_profil_schmal.jpg"
+                            class="object-scale-down"
+                            style="margin-top: 0; height: 12rem"
                     />
-                  </svg>
-                </a>
-              </div>
-              <div>
-                <a href="https://github.com/remast/">
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="48"
-                      height="48"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z"/>
-                    <path
-                        d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"
-                        fill="rgba(255,255,255,1)"
-                    />
-                  </svg>
-                </a>
-              </div>
+                </div>
+                <div>
+                    <h2 style="margin-bottom: 0; font-size: 100%" class="cross-yellow">Lena Grimm</h2>
+                    <div style="margin-bottom: 1rem">
+                        <a
+                                href="mailto:lena.grimm@crossnative.com"
+                                style="font-size: 60%"
+                        >lena.grimm@crossnative.com</a
+                        >
+                    </div>
+                    <div class="grid grid-cols-4 gap-1 text-left">
+                        <div>
+                            <a href="https://www.linkedin.com/in/lena-grimm-68058426a/">
+                                <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                >
+                                    <path fill="none" d="M0 0h24v24H0z"/>
+                                    <path
+                                            d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"
+                                            fill="rgba(255,255,255,1)"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://github.com/lena-grimm">
+                                <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                >
+                                    <path fill="none" d="M0 0h24v24H0z"/>
+                                    <path
+                                            d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"
+                                            fill="rgba(255,255,255,1)"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="grid grid-cols-3 gap-1 text-left">
-          <div style="margin-left: auto; margin-right: 2rem">
-            <img
-                src="./themes/LenaGrimm_profil_schmal.jpg"
-                class="object-scale-down"
-                style="margin-top: 0; height: 12rem"
-            />
-          </div>
-          <div>
-            <h2 style="margin-bottom: 0; font-size: 100%" class="cross-yellow">Lena Grimm</h2>
-            <div style="margin-bottom: 1rem">
-              <a
-                  href="mailto:lena.grimm@crossnative.com"
-                  style="font-size: 60%"
-              >lena.grimm@crossnative.com</a
-              >
-            </div>
-            <div class="grid grid-cols-4 gap-1 text-left">
-              <div>
-                <a href="https://www.linkedin.com/in/lena-grimm-68058426a/">
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="48"
-                      height="48"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z"/>
-                    <path
-                        d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"
-                        fill="rgba(255,255,255,1)"
-                    />
-                  </svg>
-                </a>
-              </div>
-              <div>
-                <a href="https://github.com/lena-grimm">
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="48"
-                      height="48"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z"/>
-                    <path
-                        d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"
-                        fill="rgba(255,255,255,1)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- DANKE -->
-      <section data-background-image="./themes/Pattern-11-outline.svg"
-               data-background-size="400px"
-               data-background-repeat="repeat"
-               data-background-opacity=".4">
-        <img style="scale: 130%; margin: auto;" src="./themes/dilbert_transparent.png"/>
-      </section>
-    </section>
+        <!-- QR Code -->
+        <section data-background-image="./themes/Pattern-11-outline.svg"
+                 data-background-size="400px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+            <img src="./themes/qr-code.png" width="400px" style="margin: auto;">
+            <br>
+            <h5>ppi-x.gitlabpages.ppidev.net</br>/talks/soko-23-rock-paper-scissors</h5>
+        </section>
 
 
+        <!-- BEGRIFF: CLOUD-NATIVE -->
+        <section data-background-image="./themes/Pattern-7-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
 
-    <!--      <section id="one-codebase-one-app">-->
-    <!--        <h2>One Codebase, One App</h2>-->
-    <!--      </section>-->
+            <section data-auto-animate>
+                <h1>Was heißt cloud-native?</h1>
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
 
-    <!--      <section id="api-first">-->
-    <!--        <h2>API First</h2>-->
-    <!--      </section>-->
+            <section data-auto-animate>
+                <h1>Was heißt <em>cloud</em>-native?</h1>
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
 
-    <!--      <section id="dependency-management">-->
-    <!--        <h2>Dependency Management</h2>-->
-    <!--      </section>-->
+            <section data-auto-animate="">
+                <h1>Was heißt <em>cloud</em>-native?</h1>
+                <img src="./img/paas.svg">
+                <aside class="notes">
+                    <ul>
+                        <li>Anwendung kann in der cloud gehostet werden</li>
+                        <li>Oftmals direkt Gedanke: public cloud / auch private cloud möglich</li>
+                    </ul>
+                </aside>
+            </section>
 
-    <!--      <section id="design-build-release-run">-->
-    <!--        <h2>Design, Build, Release, Run</h2>-->
-    <!--      </section>-->
+            <section data-auto-animate="">
+                <h1>Was heißt <em>cloud</em>-native?</h1>
+                <img src="./img/paas-text.svg">
+                <aside class="notes">
+                    <ul>
+                        <li>Platform, die mir alles zum Bereitstellen meiner Anwendungen bietet</li>
+                        <li>Beschreibt das Level an Abstraktion, auch IaaS oder SaaS</li>
+                    </ul>
+                </aside>
+            </section>
 
-    <!--      <section id="configuration-credentials-and-code">-->
-    <!--        <h2>Configuration, Credentials and Code</h2>-->
-    <!--      </section>-->
+            <section data-auto-animate>
+                <h1>Was heißt cloud-<em>native</em>?</h1>
+            </section>
 
-    <section id="logs">
-      <h2>Logs</h2>
-      <a href="#/cheat-go-middleware-logging-recovery">GO</a>
-      </br>
-      <a href="https://www.baeldung.com/spring-boot-logging">Spring (Link to Extern)</a>
-    </section>
+            <section data-auto-animate>
+                <h1>Was heißt cloud-<em>native</em>?</h1>
+                <br>
+                <h4 class="native-cyber-yellow">Anwendungen welche in der <br>Cloud laufen können</h4>
+                <aside class="notes">
+                    <ul>
+                        <li>Anwendungen, welche geeignet sind in der Cloud zu laufen</li>
+                        <li>Können unterschiedliche Reifegrade haben</li>
+                        <li>Was macht eine Anwendung geeignet/ ungeeignet?</li>
+                    </ul>
+                </aside>
+            </section>
 
-    <!--      <section id="disposability">-->
-    <!--        <h2>Disposability</h2>-->
-    <!--      </section>-->
-
-    <!--      <section id="backing-services">-->
-    <!--        <h2>Backing Services</h2>-->
-    <!--      </section>-->
-
-    <!--      <section id="environment-parity">-->
-    <!--        <h2>Environment Parity</h2>-->
-    <!--      </section>-->
-
-    <!--      <section id="administrative-processes">-->
-    <!--        <h2>Administrative Processes</h2>-->
-    <!--      </section>-->
-
-    <section id="port-binding">
-      <h2>Port Binding</h2>
-      <a href="#/cheat-go-port-from-env">GO</a>
-      </br>
-      <a href="https://www.baeldung.com/spring-boot-properties-env-variables">Spring (Link to
-        Extern)</a>
-    </section>
-
-    <!--      <section id="stateless-processes">-->
-    <!--        <h2>Stateless Processes</h2>-->
-    <!--      </section>-->
-
-    <!--      <section id="concurrency">-->
-    <!--        <h2>Concurrency</h2>-->
-    <!--      </section>-->
-
-    <!--      <section id="telemetry">-->
-    <!--        <h2>Telemetry</h2>-->
-    <!--      </section>-->
-
-    <!--      <section id="authentication-and-authorization">-->
-    <!--        <h2>Authentication and Authorization</h2>-->
-    <!--      </section>-->
+        </section>
 
 
+        <!-- WARUM CLOUD-NATIVE -->
+        <section data-background-image="./themes/Pattern-14-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
 
-    <!-- GO Factor Details -->
-    <section data-visibility="uncounted" id="cheat-go-middleware-logging-recovery">
-      <h2>Middleware for Logging and Recovery</h2>
-      Using middlewares from chi router or others.
-      <pre><code data-trim data-noescape class="go">
-                  r := chi.NewRouter()
-                  r.Use(middleware.Logger)
-                  r.Use(middleware.Recoverer)
-                </code></pre>
-      <ul>
-        <li>What does the recovery middleware do?</li>
-        <li>Bonus: How can you set a request timeout using middleware?</li>
-      </ul>
-      <a href="#/factors">Back to Factors</a>
-    </section>
+            <section data-background-image="./themes/Pattern-14-outline.svg"
+                     data-background-size="300px"
+                     data-background-repeat="repeat"
+                     data-background-opacity=".4">
+                <h1>Warum cloud-native?</h1>
+                <aside class="notes">
+                    <ul>
+                        <li>Noch nicht verstanden was meine Anwendung geeignet macht</li>
+                        <li>Warum sollte mich das interessieren?</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>API - Rock, Paper Scissors</h2>
+                <img src="./img/rps-no-cloud.svg">
+                <aside class="notes">
+                    <ul>
+                        <li>Bestehendes Frontend</li>
+                        <li>Bereitstellen einer kleinen Anwendung</li>
+                        <li>Viele Möglichkeiten API zu designen, hier eine Möglichkeit</li>
+                        <li>Spiele erstellen + Verändern -> Zustand abfragen</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
+                <img src="./img/rps-no-cloud.svg">
+                <aside class="notes">
+                    <ul>
+                        <li>Auf welchem Server läuft meine Anwendung?</li>
+                        <li>Wo soll die Datenbank laufen</li>
+                        <li>Eigene Hardware: Was passiert bei Ausfällen?</li>
+                        <li>Wer/ Wann macht Datenbank Backups</li>
+                        <li>Wie kommt meine Anwendung auf den Server?</li>
+                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
+                        <li>Wie realisiere ich unterschiedliche Umgebungen? Dev, Test, Prod?</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
+                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
+                    <img src="./img/rps-no-cloud.svg">
+                    <ul>
+                        <li>Server / Hardware</li>
+                        <li>Netzwerk Grenzen</li>
+                    </ul>
+                </div>
+                <aside class="notes">
+                    <ul>
+                        <li>Auf welchem Server läuft meine Anwendung?</li>
+                        <li>Wo soll die Datenbank laufen</li>
+                        <li>Eigene Hardware: Was passiert bei Ausfällen?</li>
+                        <li>Wer/ Wann macht Datenbank Backups</li>
+                        <li>Wie kommt meine Anwendung auf den Server?</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
+                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
+                    <img src="./img/rps-no-cloud.svg">
+                    <ul>
+                        <li>Server / Hardware</li>
+                        <li>Netzwerk Grenzen</li>
+                        <li>Firewall Regeln</li>
+                        <li>Port Freigaben</li>
+                    </ul>
+                </div>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
+                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
+                    <img src="./img/rps-no-cloud.svg">
+                    <ul>
+                        <li>Server / Hardware</li>
+                        <li>Netzwerk Grenzen</li>
+                        <li>Firewall Regeln</li>
+                        <li>Port Freigaben</li>
+                        <li>Updates machen</li>
+                        <li>Umgebungen?</li>
+                    </ul>
+                </div>
+                <aside class="notes">
+                    <ul>
+                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Sicherheit/Robustheit</li>
+                        <li>Wie realisiere ich unterschiedliche Umgebungen? Dev, Test, Prod?</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
+                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
+                    <img src="./img/rps-no-cloud.svg">
+                    <ul>
+                        <li>Server / Hardware</li>
+                        <li>Netzwerk Grenzen</li>
+                        <li>Firewall Regeln</li>
+                        <li>Port Freigaben</li>
+                        <li>Updates machen</li>
+                        <li>Umgebungen?</li>
+                    </ul>
+                </div>
+                <br>
+                <h4 class="native-cyber-yellow">Was ist mit der eigentlichen Anwendung?</h4>
+            </section>
+
+            <section data-auto-animate="">
+                <h2 class="native-cyber-yellow">Servers are not pets,<br>they are cattle</h2>
+                <aside class="notes">
+                    <ul>
+                        <li>Server wird gepflegt und gehütet</li>
+                        <li>Eigentlich soll er befähigen eigentliches Ziel zu erreichen</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate="">
+                <h2>Wie sieht das Deployment<br>in der Cloud aus?</h2>
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>in der Cloud aus?</h2>
+                <img src="./img/rps-cloud.svg">
+                <aside class="notes">
+                    <ul>
+                        <li>Server Infrastruktur drum herum wird mir abgenommen</li>
+                        <li>Bewege mich in meinem Anwendungskontext</li>
+                        <li>Sogar die Datenbank als Container</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>in der Cloud aus?</h2>
+                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
+                    <img src="./img/rps-cloud.svg">
+                    <ul>
+                        <li>Fokus auf Anwendung</li>
+                        <li>Skalierbar</li>
+                        <li>Resilienz</li>
+                        <li>Kurze Time-to-Market</li>
+                        <li>Robustheit</li>
+                        <li>Sicherheit</li>
+                    </ul>
+                </div>
+                <aside class="notes">
+                    <ul>
+                        <li>Schnelles initiales Hosten, als auch Updates</li>
+                        <li>Anwendung als Image verpackt</li>
+                        <li>Geringe Downtimes</li>
+                        <li>Verantwortungen der Platform abgegeben</li>
+                        <li>Ich muss mich nicht um Updates kümmern</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>in der Cloud aus?</h2>
+                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
+                    <img src="./img/rps-cloud.svg">
+                    <ul>
+                        <li>Fokus auf Anwendung</li>
+                        <li>Skalierbar</li>
+                        <li>Resilienz</li>
+                        <li>Kurze Time-to-Market</li>
+                        <li>Robustheit</li>
+                        <li>Sicherheit</li>
+                    </ul>
+                </div>
+                <br>
+                <h4 class="native-cyber-yellow">... keine Besonderheit mehr sondern normal</h4>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+        </section>
 
 
-    <section data-visibility="uncounted" id="cheat-go-port-from-env">
-      <h2>Configure Port <br/> from Environment Variable </h2>
-      Using the Standard Library
-      <pre style="font-size: 0.44em;"><code data-trim data-noescape class="go">
-                  func main() {
-                    http.ListenAndServe(fmt.Sprintf(":%v", os.Getenv("PORT")), r)
-                  }
-                </code></pre>
-      <h4 class="cross-red">Using envconfig</h4>
-      <code>github.com/kelseyhightower/envconfig</code>
-      <pre style="font-size: 0.44em;"><code data-trim data-noescape class="go">
-                  // Application Configuration
-                  type Config struct {
-                    Port string `envconfig:"PORT" default:"8080"`
-                  }
+        <!-- CLOUD-NATIVE IN DER ENTWICKLUNG -->
+        <section data-background-image="./themes/Pattern-9-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
 
-                  func main() {
-                    http.ListenAndServe(fmt.Sprintf(":%v", c.Port), r)
-                  }
-                </code></pre>
-      <a href="#/factors">Back to Factors</a>
-    </section>
+            <section data-auto-animate=""
+                     data-background-image="./themes/Pattern-9-outline.svg"
+                     data-background-size="300px"
+                     data-background-repeat="repeat"
+                     data-background-opacity=".4">
+                <h1>Cloud-native </br> in der Entwicklung</h1>
+            </section>
 
-  </div>
-</div>
+            <section data-auto-animate="">
+                <h1>Cloud-native </br> in der Entwicklung</h1>
+                <h4>
+                    2012 -
+                    <a href="https://12factor.net/de/">
+                        The Twelve Factor App
+                    </a>
+                </h4>
+                </br>
+                <aside class="notes">
+                    <ul>
+                        <li>Gruppe von Leuten aus Heroku</li>
+                        <li>Festlegen von Standards für die Entwicklung</li>
+                        <li>Festlegen von Bedeutungen für Worte</li>
+                        <li>Weitergabe von Best Practices</li>
+                    </ul>
+                </aside>
+            </section>
 
-<script src="./assets/node_modules/reveal.js/dist/reveal.js"></script>
-<script src="./assets/node_modules/reveal.js/plugin/notes/notes.js"></script>
-<script src="./assets/node_modules/reveal.js/plugin/markdown/markdown.js"></script>
-<script src="./assets/node_modules/reveal.js/plugin/highlight/highlight.js"></script>
-<script src="./assets/node_modules/reveal.js/plugin/zoom/zoom.js"></script>
+            <section data-auto-animate="">
+                <h1>Cloud-native </br> in der Entwicklung</h1>
+                <h4>
+                    2012 -
+                    <a href="https://12factor.net/de/">
+                        The Twelve Factor App
+                    </a>
+                </h4>
+                </br>
+                <h4>
+                    2016 -
+                    <a href="https://tanzu.vmware.com/content/blog/beyond-the-twelve-factor-app">
+                        Beyond the Twelve Factor App
+                    </a>
+                </h4>
+                <aside class="notes">
+                    <ul>
+                        <li>Weiterentwicklung von Frameworks: Ausformulierung bestimmter Punkte</li>
+                        <li>Hinzunahme weiterer Punkte</li>
+                        <li>Heißen nicht, dass sie in anderen Anwendungen nicht relevant sind</li>
+                        <li>Erleichtern Entwickeln für die Cloud</li>
+                    </ul>
+                </aside>
+            </section>
 
-<script>
-  Reveal.initialize({
-    transition: "slide",
-    pdfSeparateFragments: false,
-    navigationMode: "linear",
-    dependencies: [
-      {src: "./node_modules/reveal-plantuml/dist/reveal-plantuml.min.js"},
-    ],
-    hash: true,
-    plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
-  });
-</script>
+
+            <section data-auto-animate="">
+                <h2>The 12-Factor-App <small>and Beyond</small></h2>
+                <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
+                    <div class="col-span-6">
+                        <ul>
+                            <li>One Codebase, One App</li>
+                            <li>API First</li>
+                            <li>Design, Build, Release, Run</li>
+                            <li>Backing Services</li>
+                            <li>Environment Parity</li>
+                            <li>Administrative Processes</li>
+                            <li>Port Binding</li>
+                            <li>Stateless Processes</li>
+                            <li>Telemetry</li>
+                            <li>Authentication and Authorization</li>
+                        </ul>
+                    </div>
+                    <div class="col-span-6">
+                        <ul start="8">
+                            <li>...</li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="notes">
+                    <ol>
+                        <li>Version Control, ein Repo pro App, separate Commit History</li>
+                        <li>Zuerst die API designen, alle Services via API verfügbar</li>
+                        <li>Diskrete Schritte, Design à la API First, Technisch Release und Run getrennt</li>
+                        <li>Beispiel: Datenbank ist kein enger Teil der Anwenung, ausschließlich über URL reingereicht
+                        </li>
+                        <li>Gleiche Umgebungen sind einfach, das sollte man auch ausnutzen: Parität =>
+                            Reproduzierbarkeit => Verfügbarkeit
+                        </li>
+                        <li>Kann mich nicht auf meine Pods connecten, könnten jederzeit weg sein</li>
+                        <li>Cloud bestimmt welcher Port tatsächlich zugewiesen wird, kann auch variieren</li>
+                        <li>Anwendung muss zustandslos sein, denn sie kann jederzeit neugestartet werden, keine
+                            Dateien/ Sticky Sessions!
+                        </li>
+                        <li>Anwendungen im Netz, ggf public Cloud, Daten gehen über Datencenter, sind in
+                            unterschiedlichen Standorten verfügbar
+                        </li>
+                    </ol>
+                </aside>
+            </section>
+
+            <section data-auto-animate="">
+                <h2>The 12-Factor-App <small>and Beyond</small></h2>
+                <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
+                    <div class="col-span-6">
+                        <ul>
+                            <li>One Codebase, One App</li>
+                            <li>API First</li>
+                            <li>Design, Build, Release, Run</li>
+                            <li>Backing Services</li>
+                            <li>Environment Parity</li>
+                            <li>Administrative Processes</li>
+                            <li>Port Binding</li>
+                            <li>Stateless Processes</li>
+                            <li>Telemetry</li>
+                            <li>Authentication and Authorization</li>
+                        </ul>
+                    </div>
+                    <div class="col-span-6">
+                        <ul start="8">
+                            <li>Configuration, Credentials, Code</li>
+                            <li>Dependency Management</li>
+                            <li>Logs</li>
+                            <li>Concurrency</li>
+                            <li>Disposability</li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="notes">
+                    <ol>
+                        <li>Trennung der drei Komponenten</li>
+                        <li>Verwendung von Dependency Managern</li>
+                        <li>Möglicherweise mehrere Pods, Stürzen ab, File Rolling ergibt hier kein Sinn</li>
+                        <li>Beliebig Skalierbar in unterschiedliche Richtungen</li>
+                        <li>Schnell Starten, Schnell Stoppen, Spring Actuator</li>
+                        <li>Anwendung ist irgendwo, woher weiß ich, dass alles okay ist?</li>
+                    </ol>
+                </aside>
+            </section>
+
+        </section>
+
+        <!-- VOTING -->
+        <section data-background-image="./themes/Pattern-1-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+
+            <section data-auto-animate=""
+                     data-background-image="./themes/Pattern-1-outline.svg"
+                     data-background-size="300px"
+                     data-background-repeat="repeat"
+                     data-background-opacity=".4">
+                <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
+                    <iframe sandbox='allow-scripts allow-same-origin allow-presentation'
+                            allowfullscreen='true' allowtransparency='true' frameborder='0' height='315'
+                            src='https://www.mentimeter.com/app/presentation/al6m3wiyraw27f8hz75sorfnter5f4f4/embed'
+                            style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'
+                            width='420'></iframe>
+                </div>
+            </section>
+        </section>
+
+        <!-- DEEP DIVE -->
+        <section data-background-image="./themes/Pattern-1-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+
+            <section data-auto-animate="" id="factor-overview">
+                <h2>The 12-Factor-App <small>and Beyond</small></h2>
+                <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
+                    <div class="col-span-6">
+                        <ul>
+                            <li>One Codebase, One App</li>
+                            <li>API First</li>
+                            <li>Design, Build, Release, Run</li>
+                            <li>Backing Services</li>
+                            <li>Environment Parity</li>
+                            <li>Administrative Processes</li>
+                            <li>Port Binding</li>
+                            <li>Stateless Processes</li>
+                            <li>Telemetry</li>
+                            <li>Authentication and Authorization</li>
+                        </ul>
+                    </div>
+                    <div class="col-span-6">
+                        <ul start="8">
+                            <li><a href="#/factor-1">Configuration, Credentials, Code</a></li>
+                            <li><a href="#/factor-2">Dependency Management</a></li>
+                            <li><a href="#/factor-3">Logs</a></li>
+                            <li><a href="#/factor-4">Concurrency</a></li>
+                            <li><a href="#/factor-5">Disposability</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <small><a href="#/end">Zum Fazit</a></small>
+            </section>
+
+        </section>
+
+
+        <!-- DEEP DIVE Configuration Credential Code -->
+        <section data-background-image="./themes/Pattern-1-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+
+            <section id="factor-1" data-auto-animate="">
+                <h2>Configuration, Credentials, Code</h2>
+                <br>
+                <p style="font-style: italic">Treat configuration, credentials, and code as volatile substances that
+                    explode when combined.</p>
+                <br>
+                <aside class="notes">
+                    <ol>
+                        <li>Erlaubt es einfacher neue Umgebungen hochzuziehen (nur neue Konfiguration)</li>
+                        <li>Konfiguration ist alles, was zwischen Deployments anders sein kann</li>
+                        <li>Verhindert Konfiguration eng in die Anwendung zu weben</li>
+                        <li>Gleiche Builds auf unterschiedliche Umgebungen</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Configuration, Credentials, Code</h2>
+                <br>
+                <p style="font-style: italic">Treat configuration, credentials, and code as volatile substances that
+                    explode when combined.</p>
+                <br>
+                <p style="font-style: italic">Imagine the consequences of your application’s source code being pushed
+                    publicly.</p>
+                <br>
+                <aside class="notes">
+                    <ol>
+                        <li>Deployment ist einfach, wenn alles im Repo liegt, wäre Repo Zugriff schwierig</li>
+                        <li>Vertraulichkeit auf Grund von Cloud Aspekten</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Configuration, Credentials, Code</h2>
+                <br>
+                <h6 class="text-left"><code>application.properties</code></h6>
+                <div class="boxed code">
+                    <br>
+                    db.url=${JDBC_URL}<br>
+                    server.port=${PORT}<br><br>
+                </div>
+                <br>
+                <h6><a href="#/factor-overview">Back</a></h6>
+                <aside class="notes">
+                    <ol>
+                        <li></li>
+                    </ol>
+                </aside>
+            </section>
+
+        </section>
+
+        <!-- DEEP DIVE Dependency Management -->
+        <section data-background-image="./themes/Pattern-1-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+
+            <section id="factor-2" data-auto-animate="">
+                <h2>Dependency Management</h2>
+                <ul>
+                    <li>Abhängigkeiten explizit ausdrücken</li>
+                    <li>Keine Annahmen zu Abhängigkeiten treffen</li>
+                </ul>
+                <aside class="notes">
+                    <ol>
+                        <li>Alle Abhängigkeiten werden explizit ausgedrückt</li>
+                        <li>Abhängigkeiten selbst werden nicht eingecheckt (einchecken von jars)</li>
+                        <li>Leichtgewichtig, Reproduzierbar, einfach versionierbar</li>
+                        <li>Reproduzierbar, das muss es für Cloud sein</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Dependency Management</h2>
+                <h6 class="text-left"><code>pom.xml</code></h6>
+                <div class="boxed code text-left">
+                    <small>
+                        <!-- @formatter:off -->
+                        <xmp>
+    ...
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        ...
+    </dependencies>
+    ...
+                        </xmp>
+                        <!-- @formatter:on -->
+                    </small>
+                </div>
+            </section>
+            <section data-auto-animate="">
+                <h2>Dependency Management</h2>
+                <h6 class="text-left"><code>pom.xml</code></h6>
+                <div class="boxed code text-left">
+                    <small>
+                        <!-- @formatter:off -->
+                        <xmp>
+    ...
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        ...
+    </dependencies>
+    ...
+                        </xmp>
+                        <!-- @formatter:on -->
+                    </small>
+                </div>
+                <code class="text-left"><small>&gt; mvn clean install</small></code>
+                <br>
+                <h6><a href="#/factor-overview">Back</a></h6>
+            </section>
+
+        </section>
+
+
+        <!-- DEEP DIVE Logs -->
+        <section data-background-image="./themes/Pattern-1-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+
+            <section id="factor-3" data-auto-animate="">
+                <h2>Logs</h2>
+                <aside class="notes">
+                    <ol>
+                        <li>Wo ist denn das Problem? Natürlich brauchen wir Logs</li>
+                        <li>Normalerweise File Rolling, Location</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Logs</h2>
+                <p>Keine Annahmen über Dateisystem!</p>
+                <aside class="notes">
+                    <ol>
+                        <li>Anwendung kann jederzeit herunterfahren</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Logs</h2>
+                <p>Keine Annahmen über Dateisystem!</p>
+                <p class="native-cyber-yellow">→ Logs sind zeitlich geordnete Event Streams</p>
+                <aside class="notes">
+                    <ol>
+                        <li>Cloud übernimmt Routing und Speicherung des Output Streams</li>
+                        <li>Aggregation, Processierung und Speicherung sind nicht-funktionale Anforderungen</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Logs</h2>
+                <img src="./img/logs.svg">
+                <aside class="notes">
+                    <ol>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Logs</h2>
+                <img src="./img/logs2.svg">
+                <aside class="notes">
+                    <ol>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h5 class="text-left">Beispiel Google Cloud</h5>
+                <img width="80%" src="./img/google-logs.png">
+                <h6><a href="#/factor-overview">Back</a></h6>
+                <aside class="notes">
+                    <ol>
+                        <li>Anwenung kann Frameworks nutzen, um Logging zu abstrahieren</li>
+                    </ol>
+                </aside>
+            </section>
+
+
+        </section>
+
+
+        <!-- DEEP DIVE Concurrency -->
+        <section data-background-image="./themes/Pattern-1-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+
+            <section id="factor-4" data-auto-animate="">
+                <h2>Concurrency</h2>
+                <p style="font-style: italic">Adding more concurrency is a<br>simple and reliable operation.</p>
+                <aside class="notes">
+                    <ol>
+                        <li></li>
+                        <li>Weil es so einfach ist: auch horizontal</li>
+                        <li>Besonders Berechnungsintensive Prozesse</li>
+                        <li>Downskaling, wenn ich sie nicht mehr brauche</li>
+                        <li>Keine Kosten</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Concurrency</h2>
+                <img width="30%" src="./img/concurrency1.svg">
+                <aside class="notes">
+                    <ol>
+                        <li>Vertical Skalieren: Mehrere Instanzen</li>
+                        <li>Weil es so einfach ist: auch horizontal</li>
+                        <li>Besonders Berechnungsintensive Prozesse</li>
+                        <li>Downskaling, wenn ich sie nicht mehr brauche</li>
+                        <li>Keine Kosten</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Concurrency</h2>
+                <img width="80%" src="./img/concurrency2.svg">
+                <aside class="notes">
+                    <ol>
+                        <li>Vertical Skalieren: Mehrere Instanzen</li>
+                        <li>Weil es so einfach ist: auch horizontal</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Concurrency</h2>
+                <div class="grid grid-cols-2" style="font-size: 70%;">
+                    <img width="80%" src="./img/concurrency2.svg">
+                    <ul>
+                        <li>Dynamische Skalierbarkeit</li>
+                        <li>Kosten sparen, wenn ungenutzt</li>
+                    </ul>
+                </div>
+                <h6><a href="#/factor-overview">Back</a></h6>
+                <aside class="notes">
+                    <ol>
+                        <li>Vertical Skalieren: Mehrere Instanzen</li>
+                        <li>Weil es so einfach ist: auch horizontal</li>
+                        <li>Besonders Berechnungsintensive Prozesse</li>
+                        <li>Downskaling, wenn ich sie nicht mehr brauche</li>
+                        <li>Keine Kosten</li>
+                    </ol>
+                </aside>
+            </section>
+        </section>
+
+
+        <!-- DEEP DIVE Disposability -->
+        <section data-background-image="./themes/Pattern-1-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+
+            <section id="factor-5">
+                <h2>Disposability</h2>
+                <aside class="notes">
+                    <ol>
+                        <li>Jederzeit gestartet und gestopped</li>
+                        <li>Kurze Startups sind sehr relevant</li>
+                        <li>Wann ist meine Anwenung bereit Requests entgegen zu nehmen?</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Disposability</h2>
+                <p>Wann ist meine Anwenung bereit Requests<br>entgegen zu nehmen?</p>
+            </section>
+            <section data-auto-animate="">
+                <h2>Disposability</h2>
+                <h4 class="text-left">Spring Actuator</h4>
+                <div class="boxed code text-left">
+                    <small>
+                        <!-- @formatter:off -->
+                    <xmp>
+    ...
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    ...
+                    </xmp>
+                    <!-- @formatter:on -->
+                    </small>
+                </div>
+                <br>
+                <small class="text-left">
+                    <code>management.endpoint.health.probes.enabled=true</code>
+                    <code>management.health.livenessState.enabled=true</code>
+                    <code>management.health.readinessState.enabled=true</code></small>
+                <aside class="notes">
+                    <ol>
+                        <li>Liveness: Restarted den Container</li>
+                        <li>Readiness: App wird keinen Traffic mehr serven</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Disposability</h2>
+                <h6 class="text-left"><code>/actuator/health/liveness</code></h6>
+                <div class="boxed code text-left">
+                    <small>
+                    <!-- @formatter:off -->
+                    <xmp>
+    {
+      "status": "UP",
+      "components": {
+        "livenessstate": {
+          "status": "UP"
+        }
+      }
+    }
+                    </xmp>
+                    <!-- @formatter:on -->
+                    </small>
+                </div>
+                <br>
+                <h6><a href="#/factor-overview">Back</a></h6>
+                <aside class="notes">
+                    <ol>
+                        <li>Jederzeit gestartet und gestopped</li>
+                        <li>Kurze Startups sind sehr relevant</li>
+                    </ol>
+                </aside>
+            </section>
+
+        </section>
+
+
+        <!-- END -->
+        <section data-background-image="./themes/Pattern-11-outline.svg"
+                 data-background-size="400px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15"
+                 id="end">
+
+            <section data-background-image="./themes/Pattern-11-outline.svg"
+                     data-background-size="400px"
+                     data-background-repeat="repeat"
+                     data-background-opacity=".4"
+                     data-auto-animate="">
+                <h1>Fazit</h1>
+                <ul>
+                    <li>Was ist cloud-native?</li>
+                    <li>Warum sollte mich das interessieren?</li>
+                </ul>
+            </section>
+
+            <section data-auto-animate="">
+                <h1>Fazit</h1>
+                <ul>
+                    <li>Was ist cloud-native?</li>
+                    <li>Warum sollte mich das interessieren?</li>
+                    <br>
+                    <li>Twelve Factor App / Beyond Twelve Factor</li>
+                </ul>
+            </section>
+
+            <section data-auto-animate="">
+                <h1>Fazit</h1>
+                <ul>
+                    <li>Was ist cloud-native?</li>
+                    <li>Warum sollte mich das interessieren?</li>
+                    <br>
+                    <li>Twelve Factor App / Beyond Twelve Factor</li>
+                    <br>
+                    <li>Was ist bei der Entwicklung zu beachten?</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>The 12-Factor-App <small>and Beyond</small></h2>
+                <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
+                    <div class="col-span-6">
+                        <ul>
+                            <li>One Codebase, One App</li>
+                            <li>API First</li>
+                            <li>Design, Build, Release, Run</li>
+                            <li>Backing Services</li>
+                            <li>Environment Parity</li>
+                            <li>Administrative Processes</li>
+                            <li>Stateless Processes</li>
+                            <li>Port Binding</li>
+                            <li>Telemetry</li>
+                            <li>Authentication and Authorization</li>
+                        </ul>
+                    </div>
+                    <div class="col-span-6">
+                        <ul start="8">
+                            <li>Configuration, Credentials, Code</li>
+                            <li>Dependency Management</li>
+                            <li>Logs</li>
+                            <li>Concurrency</li>
+                            <li>Disposability</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DANKE -->
+            <section data-background-image="./themes/Pattern-11-outline.svg"
+                     data-background-size="400px"
+                     data-background-repeat="repeat"
+                     data-background-opacity=".4">
+                <img style="scale: 100%; margin: auto;" src="./themes/dilbert_transparent.png"/>
+            </section>
+        </section>
+
+    </div>
+
+    <script src="./assets/node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="./assets/node_modules/reveal.js/plugin/notes/notes.js"></script>
+    <script src="./assets/node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="./assets/node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="./assets/node_modules/reveal.js/plugin/zoom/zoom.js"></script>
+
+    <script>
+        Reveal.initialize({
+            transition: "slide",
+            pdfSeparateFragments: false,
+            navigationMode: "linear",
+            dependencies: [
+                {src: "./node_modules/reveal-plantuml/dist/reveal-plantuml.min.js"},
+            ],
+            hash: true,
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
+        });
+    </script>
 </body>
 </html>
