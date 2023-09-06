@@ -30,14 +30,15 @@
                 <ul>
                     <li>Titel: Näher bringen was es bedeutet cloud-native zu sein</li>
                     <li>Laufbeispiel einer Rock, Paper, Scissors Anwendung</li>
-                    <li>Disclaimer: Aus Erfahrungen, ihr habt da mit Sicherheit auch noch weiteren Input</li>
-                    <li>Eigene Erfahrungen im Anschluss noch diskutieren</li>
                 </ul>
             </aside>
         </section>
 
         <!-- PERSONS -->
-        <section>
+        <section data-background-image="./themes/Pattern-11-outline.svg"
+                 data-background-size="400px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
             <div class="grid grid-cols-3 gap-1 text-left">
                 <div style="margin-left: auto; margin-right: 2rem">
                     <img
@@ -91,6 +92,11 @@
                     </div>
                 </div>
             </div>
+            <aside class="notes">
+                <ul>
+                    <li></li>
+                </ul>
+            </aside>
         </section>
 
         <!-- QR Code -->
@@ -101,6 +107,11 @@
             <img src="./themes/qr-code.png" width="400px" style="margin: auto;">
             <br>
             <h5>ppi-x.gitlabpages.ppidev.net</br>/talks/soko-23-rock-paper-scissors</h5>
+            <aside class="notes">
+                <ul>
+                    <li>Könnt hier die Slides anschauen, falls interessant auch im Nachgang</li>
+                </ul>
+            </aside>
         </section>
 
 
@@ -114,7 +125,7 @@
                 <h1>Was heißt cloud-native?</h1>
                 <aside class="notes">
                     <ul>
-                        <li></li>
+                        <li>Im Titel kam cloud-native vor - was heißt denn das?</li>
                     </ul>
                 </aside>
             </section>
@@ -123,7 +134,7 @@
                 <h1>Was heißt <em>cloud</em>-native?</h1>
                 <aside class="notes">
                     <ul>
-                        <li></li>
+                        <li>Was meinen wir denn, wenn wir Cloud sagen?</li>
                     </ul>
                 </aside>
             </section>
@@ -133,8 +144,9 @@
                 <img src="./img/paas.svg">
                 <aside class="notes">
                     <ul>
-                        <li>Anwendung kann in der cloud gehostet werden</li>
-                        <li>Oftmals direkt Gedanke: public cloud / auch private cloud möglich</li>
+                        <li>Unternehmen zusammen mit Software arbeiten</li>
+                        <li>Unterschiedliche Level, ganz unten Server Hardware, oben nur Login auf Anwendung</li>
+                        <li>Beschreibt das Level an Abstraktion, auch IaaS oder SaaS</li>
                     </ul>
                 </aside>
             </section>
@@ -145,13 +157,20 @@
                 <aside class="notes">
                     <ul>
                         <li>Platform, die mir alles zum Bereitstellen meiner Anwendungen bietet</li>
-                        <li>Beschreibt das Level an Abstraktion, auch IaaS oder SaaS</li>
+                        <li>Oftmals direkt Gedanke: public cloud / auch private cloud möglich</li>
+                        <li>Kerngedanke: Ich beschäftige mich nur mit den Dingen, die für meine Entwicklung wirklich relevant sind</li>
                     </ul>
                 </aside>
             </section>
 
             <section data-auto-animate>
                 <h1>Was heißt cloud-<em>native</em>?</h1>
+                <aside class="notes">
+                    <ul>
+                        <li>Sind Anwendungen nur native, wenn von Anfang an dafür gebaut?</li>
+                        <li>Gibt auch Zwischenvarianten</li>
+                    </ul>
+                </aside>
             </section>
 
             <section data-auto-animate>
@@ -183,6 +202,7 @@
                 <h1>Warum cloud-native?</h1>
                 <aside class="notes">
                     <ul>
+                        <li>Verstanden was Cloud und cloud-native ist, warum soll mich das interessieren?</li>
                         <li>Noch nicht verstanden was meine Anwendung geeignet macht</li>
                         <li>Warum sollte mich das interessieren?</li>
                     </ul>
@@ -194,6 +214,7 @@
                 <img src="./img/rps-no-cloud.svg">
                 <aside class="notes">
                     <ul>
+                        <li>Laufbeispiel, das wir immer mal zur Erklärung heranziehen</li>
                         <li>Bestehendes Frontend</li>
                         <li>Bereitstellen einer kleinen Anwendung</li>
                         <li>Viele Möglichkeiten API zu designen, hier eine Möglichkeit</li>
@@ -205,6 +226,17 @@
             <section data-auto-animate>
                 <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
                 <img src="./img/rps-no-cloud.svg">
+            </section>
+
+            <section data-auto-animate>
+                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
+                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
+                    <img src="./img/rps-no-cloud.svg">
+                    <ul>
+                        <li>Server / Hardware</li>
+                        <li>Netzwerk Grenzen</li>
+                    </ul>
+                </div>
                 <aside class="notes">
                     <ul>
                         <li>Auf welchem Server läuft meine Anwendung?</li>
@@ -225,6 +257,8 @@
                     <ul>
                         <li>Server / Hardware</li>
                         <li>Netzwerk Grenzen</li>
+                        <li>Firewall Regeln</li>
+                        <li>Port Freigaben</li>
                     </ul>
                 </div>
                 <aside class="notes">
@@ -234,23 +268,8 @@
                         <li>Eigene Hardware: Was passiert bei Ausfällen?</li>
                         <li>Wer/ Wann macht Datenbank Backups</li>
                         <li>Wie kommt meine Anwendung auf den Server?</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section data-auto-animate>
-                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
-                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
-                    <img src="./img/rps-no-cloud.svg">
-                    <ul>
-                        <li>Server / Hardware</li>
-                        <li>Netzwerk Grenzen</li>
-                        <li>Firewall Regeln</li>
-                        <li>Port Freigaben</li>
-                    </ul>
-                </div>
-                <aside class="notes">
-                    <ul>
+                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
+                        <li>Wie realisiere ich unterschiedliche Umgebungen? Dev, Test, Prod?</li>
                     </ul>
                 </aside>
             </section>
@@ -270,7 +289,12 @@
                 </div>
                 <aside class="notes">
                     <ul>
-                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Sicherheit/Robustheit</li>
+                        <li>Auf welchem Server läuft meine Anwendung?</li>
+                        <li>Wo soll die Datenbank laufen</li>
+                        <li>Eigene Hardware: Was passiert bei Ausfällen?</li>
+                        <li>Wer/ Wann macht Datenbank Backups</li>
+                        <li>Wie kommt meine Anwendung auf den Server?</li>
+                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
                         <li>Wie realisiere ich unterschiedliche Umgebungen? Dev, Test, Prod?</li>
                     </ul>
                 </aside>
@@ -286,6 +310,7 @@
                         <li>Firewall Regeln</li>
                         <li>Port Freigaben</li>
                         <li>Updates machen</li>
+                        <li>Statische Ressourcen</li>
                         <li>Umgebungen?</li>
                     </ul>
                 </div>
@@ -315,6 +340,8 @@
                         <li>Server Infrastruktur drum herum wird mir abgenommen</li>
                         <li>Bewege mich in meinem Anwendungskontext</li>
                         <li>Sogar die Datenbank als Container</li>
+                        <li>Updates egal, Hardware egal</li>
+                        <li>Schnelles initiales Deployment</li>
                     </ul>
                 </aside>
             </section>
@@ -393,7 +420,7 @@
                 <aside class="notes">
                     <ul>
                         <li>Gruppe von Leuten aus Heroku</li>
-                        <li>Festlegen von Standards für die Entwicklung</li>
+                        <li>Festlegen von Standards/Pattern für die Entwicklung</li>
                         <li>Festlegen von Bedeutungen für Worte</li>
                         <li>Weitergabe von Best Practices</li>
                     </ul>
@@ -436,6 +463,40 @@
                             <li>Design, Build, Release, Run</li>
                             <li>Backing Services</li>
                             <li>Environment Parity</li>
+                            <li>...</li>
+                        </ul>
+                    </div>
+                    <div class="col-span-6">
+                        <ul start="8">
+                        </ul>
+                    </div>
+                </div>
+                <aside class="notes">
+                    <ol>
+                        <li>Version Control, ein Repo pro App, separate Commit History</li>
+                        <li>Zuerst die API designen, alle Services via API verfügbar</li>
+                        <li>Diskrete Schritte, Design à la API First, Technisch Release und Run getrennt</li>
+                        <li>Beispiel: Datenbank ist kein enger Teil der Anwenung, ausschließlich über URL reingereicht
+                        </li>
+                        <li>Gleiche Umgebungen sind einfach, das sollte man auch ausnutzen: Parität =>
+                            Reproduzierbarkeit => Verfügbarkeit
+                        </li>
+                        </li>
+                    </ol>
+                </aside>
+            </section>
+
+
+            <section data-auto-animate="">
+                <h2>The 12-Factor-App <small>and Beyond</small></h2>
+                <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
+                    <div class="col-span-6">
+                        <ul>
+                            <li>One Codebase, One App</li>
+                            <li>API First</li>
+                            <li>Design, Build, Release, Run</li>
+                            <li>Backing Services</li>
+                            <li>Environment Parity</li>
                             <li>Administrative Processes</li>
                             <li>Port Binding</li>
                             <li>Stateless Processes</li>
@@ -451,14 +512,6 @@
                 </div>
                 <aside class="notes">
                     <ol>
-                        <li>Version Control, ein Repo pro App, separate Commit History</li>
-                        <li>Zuerst die API designen, alle Services via API verfügbar</li>
-                        <li>Diskrete Schritte, Design à la API First, Technisch Release und Run getrennt</li>
-                        <li>Beispiel: Datenbank ist kein enger Teil der Anwenung, ausschließlich über URL reingereicht
-                        </li>
-                        <li>Gleiche Umgebungen sind einfach, das sollte man auch ausnutzen: Parität =>
-                            Reproduzierbarkeit => Verfügbarkeit
-                        </li>
                         <li>Kann mich nicht auf meine Pods connecten, könnten jederzeit weg sein</li>
                         <li>Cloud bestimmt welcher Port tatsächlich zugewiesen wird, kann auch variieren</li>
                         <li>Anwendung muss zustandslos sein, denn sie kann jederzeit neugestartet werden, keine
@@ -587,6 +640,7 @@
                 <br>
                 <aside class="notes">
                     <ol>
+                        <li>In Cloud, möglicherweise mehrere Deployments: muss einfach sein</li>
                         <li>Erlaubt es einfacher neue Umgebungen hochzuziehen (nur neue Konfiguration)</li>
                         <li>Konfiguration ist alles, was zwischen Deployments anders sein kann</li>
                         <li>Verhindert Konfiguration eng in die Anwendung zu weben</li>
@@ -615,15 +669,30 @@
                 <br>
                 <h6 class="text-left"><code>application.properties</code></h6>
                 <div class="boxed code">
-                    <br>
+                    ...<br>
                     db.url=${JDBC_URL}<br>
-                    server.port=${PORT}<br><br>
+                    server.port=${PORT}<br>
+                    ...<br>
                 </div>
+                <aside class="notes">
+                    <ol>
+                        <li>Alles was zwischen Deploys anders ist, über Environment</li>
+                        <li>Für unsere Anwendung: Datenbank URL, Server Port</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Configuration, Credentials, Code</h2>
                 <br>
+                <p>Code</p>
+                <p>+ Credentials / Configuration</p>
+                <p>= Deployment</p>
                 <h6><a href="#/factor-overview">Back</a></h6>
                 <aside class="notes">
                     <ol>
-                        <li></li>
+                        <li>Configuration wird über Environment geliefert</li>
+                        <li>Zwischen deploys bleibt Code gleich, Config unterscheidet sich</li>
+                        <li>Config bleibt gleich, Code unterscheidet sich</li>
                     </ol>
                 </aside>
             </section>
@@ -644,9 +713,9 @@
                 </ul>
                 <aside class="notes">
                     <ol>
+                        <li>Leichtgewichtig, Reproduzierbar, einfach versionierbar</li>
                         <li>Alle Abhängigkeiten werden explizit ausgedrückt</li>
                         <li>Abhängigkeiten selbst werden nicht eingecheckt (einchecken von jars)</li>
-                        <li>Leichtgewichtig, Reproduzierbar, einfach versionierbar</li>
                         <li>Reproduzierbar, das muss es für Cloud sein</li>
                     </ol>
                 </aside>
@@ -695,6 +764,12 @@
                 <code class="text-left"><small>&gt; mvn clean install</small></code>
                 <br>
                 <h6><a href="#/factor-overview">Back</a></h6>
+                <aside class="notes">
+                    <ol>
+                        <li>Alle dependencies werden geladen</li>
+                        <li>Darauf aufbauen dann beispielsweise auch Docker Images</li>
+                    </ol>
+                </aside>
             </section>
 
         </section>
@@ -778,10 +853,7 @@
                 <aside class="notes">
                     <ol>
                         <li></li>
-                        <li>Weil es so einfach ist: auch horizontal</li>
-                        <li>Besonders Berechnungsintensive Prozesse</li>
-                        <li>Downskaling, wenn ich sie nicht mehr brauche</li>
-                        <li>Keine Kosten</li>
+                        <li>Wegen Zustandlosen Prozessen: einfach mehrere Instanzen/ kein Zustand</li>
                     </ol>
                 </aside>
             </section>
@@ -790,8 +862,6 @@
                 <img width="30%" src="./img/concurrency1.svg">
                 <aside class="notes">
                     <ol>
-                        <li>Vertical Skalieren: Mehrere Instanzen</li>
-                        <li>Weil es so einfach ist: auch horizontal</li>
                         <li>Besonders Berechnungsintensive Prozesse</li>
                         <li>Downskaling, wenn ich sie nicht mehr brauche</li>
                         <li>Keine Kosten</li>
@@ -853,6 +923,21 @@
             </section>
             <section data-auto-animate="">
                 <h2>Disposability</h2>
+                <p>Wann ist meine Anwenung bereit Requests<br>entgegen zu nehmen?</p>
+                <ul>
+                    <li>Liveness</li>
+                    <li>Readyness</li>
+                </ul>
+                <aside class="notes">
+                    <ol>
+                        <li>Liveness: Anwendung ist kaputt: neustarten</li>
+                        <li>Resilienz</li>
+                        <li>Readyness: Anwendung nimmt Requests entgegen</li>
+                    </ol>
+                </aside>
+            </section>
+            <section data-auto-animate="">
+                <h2>Disposability</h2>
                 <h4 class="text-left">Spring Actuator</h4>
                 <div class="boxed code text-left">
                     <small>
@@ -905,6 +990,8 @@
                     <ol>
                         <li>Jederzeit gestartet und gestopped</li>
                         <li>Kurze Startups sind sehr relevant</li>
+                        <li>Componenten Liveness</li>
+                        <li>Spring erkennt Dependencies und fügt Komponenten dann hinzu</li>
                     </ol>
                 </aside>
             </section>
