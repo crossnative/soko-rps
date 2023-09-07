@@ -30,6 +30,7 @@
                 <ul>
                     <li>Titel: Näher bringen was es bedeutet cloud-native zu sein</li>
                     <li>Laufbeispiel einer Rock, Paper, Scissors Anwendung</li>
+                    <li>Fragen gern zwischendurch</li>
                 </ul>
             </aside>
         </section>
@@ -99,21 +100,6 @@
             </aside>
         </section>
 
-        <!-- QR Code -->
-        <section data-background-image="./themes/Pattern-11-outline.svg"
-                 data-background-size="400px"
-                 data-background-repeat="repeat"
-                 data-background-opacity=".15">
-            <img src="./themes/qr-code.png" width="400px" style="margin: auto;">
-            <br>
-            <h5>ppi-x.gitlabpages.ppidev.net</br>/talks/soko-23-rock-paper-scissors</h5>
-            <aside class="notes">
-                <ul>
-                    <li>Könnt hier die Slides anschauen, falls interessant auch im Nachgang</li>
-                </ul>
-            </aside>
-        </section>
-
 
         <!-- BEGRIFF: CLOUD-NATIVE -->
         <section data-background-image="./themes/Pattern-7-outline.svg"
@@ -176,7 +162,7 @@
             <section data-auto-animate>
                 <h1>Was heißt cloud-<em>native</em>?</h1>
                 <br>
-                <h4 class="native-cyber-yellow">Anwendungen welche in der <br>Cloud laufen können</h4>
+                <h4 class="native-cyber-yellow">Anwendungen die in der <br>Cloud laufen können</h4>
                 <aside class="notes">
                     <ul>
                         <li>Anwendungen, welche geeignet sind in der Cloud zu laufen</li>
@@ -352,7 +338,7 @@
                     <img src="./img/rps-cloud.svg">
                     <ul>
                         <li>Fokus auf Anwendung</li>
-                        <li>Skalierbar</li>
+                        <li>Skalierbarkeit</li>
                         <li>Resilienz</li>
                         <li>Kurze Time-to-Market</li>
                         <li>Robustheit</li>
@@ -376,7 +362,7 @@
                     <img src="./img/rps-cloud.svg">
                     <ul>
                         <li>Fokus auf Anwendung</li>
-                        <li>Skalierbar</li>
+                        <li>Skalierbarkeit</li>
                         <li>Resilienz</li>
                         <li>Kurze Time-to-Market</li>
                         <li>Robustheit</li>
@@ -475,8 +461,8 @@
                     <ol>
                         <li>Version Control, ein Repo pro App, separate Commit History</li>
                         <li>Zuerst die API designen, alle Services via API verfügbar</li>
-                        <li>Diskrete Schritte, Design à la API First, Technisch Release und Run getrennt</li>
-                        <li>Beispiel: Datenbank ist kein enger Teil der Anwenung, ausschließlich über URL reingereicht
+                        <li>Diskrete Schritte, Design à la API First, Technisch Release und Run getrennt, Reproduzierbar</li>
+                        <li>Beispiel: Datenbank ist kein enger Teil der Anwendung, ausschließlich über URL reingereicht
                         </li>
                         <li>Gleiche Umgebungen sind einfach, das sollte man auch ausnutzen: Parität =>
                             Reproduzierbarkeit => Verfügbarkeit
@@ -713,10 +699,12 @@
                 </ul>
                 <aside class="notes">
                     <ol>
+                        <li>Welche Arten der Abhängigkeit? Backing Services?</li>
                         <li>Leichtgewichtig, Reproduzierbar, einfach versionierbar</li>
                         <li>Alle Abhängigkeiten werden explizit ausgedrückt</li>
                         <li>Abhängigkeiten selbst werden nicht eingecheckt (einchecken von jars)</li>
                         <li>Reproduzierbar, das muss es für Cloud sein</li>
+                        <li>Datenbank Treiber in dem Webserver installiert</li>
                     </ol>
                 </aside>
             </section>
@@ -832,7 +820,7 @@
                 <h6><a href="#/factor-overview">Back</a></h6>
                 <aside class="notes">
                     <ol>
-                        <li>Anwenung kann Frameworks nutzen, um Logging zu abstrahieren</li>
+                        <li>Anwendung kann Frameworks nutzen, um Logging zu abstrahieren</li>
                     </ol>
                 </aside>
             </section>
@@ -913,26 +901,28 @@
                     <ol>
                         <li>Jederzeit gestartet und gestopped</li>
                         <li>Kurze Startups sind sehr relevant</li>
-                        <li>Wann ist meine Anwenung bereit Requests entgegen zu nehmen?</li>
+                        <li>Wann ist meine Anwendung bereit Requests entgegen zu nehmen?</li>
                     </ol>
                 </aside>
             </section>
             <section data-auto-animate="">
                 <h2>Disposability</h2>
-                <p>Wann ist meine Anwenung bereit Requests<br>entgegen zu nehmen?</p>
+                <p>Wann ist meine Anwendung bereit Requests<br>entgegen zu nehmen?</p>
             </section>
             <section data-auto-animate="">
                 <h2>Disposability</h2>
-                <p>Wann ist meine Anwenung bereit Requests<br>entgegen zu nehmen?</p>
+                <p>Wann ist meine Anwendung bereit Requests<br>entgegen zu nehmen?</p>
                 <ul>
                     <li>Liveness</li>
-                    <li>Readyness</li>
+                    <li>Readiness</li>
                 </ul>
                 <aside class="notes">
                     <ol>
                         <li>Liveness: Anwendung ist kaputt: neustarten</li>
                         <li>Resilienz</li>
-                        <li>Readyness: Anwendung nimmt Requests entgegen</li>
+                        <li>Direkt am Beispiel Kubernetes erklären</li>
+                        <li>Readiness: Anwendung nimmt Requests entgegen</li>
+                        <li>Datenbank ist weg, Readiness ist okay, Liveness ist okay</li>
                     </ol>
                 </aside>
             </section>
@@ -1040,33 +1030,19 @@
                 </ul>
             </section>
 
-            <section>
-                <h2>The 12-Factor-App <small>and Beyond</small></h2>
-                <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
-                    <div class="col-span-6">
-                        <ul>
-                            <li>One Codebase, One App</li>
-                            <li>API First</li>
-                            <li>Design, Build, Release, Run</li>
-                            <li>Backing Services</li>
-                            <li>Environment Parity</li>
-                            <li>Administrative Processes</li>
-                            <li>Stateless Processes</li>
-                            <li>Port Binding</li>
-                            <li>Telemetry</li>
-                            <li>Authentication and Authorization</li>
-                        </ul>
-                    </div>
-                    <div class="col-span-6">
-                        <ul start="8">
-                            <li>Configuration, Credentials, Code</li>
-                            <li>Dependency Management</li>
-                            <li>Logs</li>
-                            <li>Concurrency</li>
-                            <li>Disposability</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- QR Code -->
+            <section data-background-image="./themes/Pattern-11-outline.svg"
+                     data-background-size="400px"
+                     data-background-repeat="repeat"
+                     data-background-opacity=".15">
+                <img src="./themes/qr-code.png" width="400px" style="margin: auto;">
+                <br>
+                <h5>ppi-x.gitlabpages.ppidev.net</br>/talks/soko-23-rock-paper-scissors</h5>
+                <aside class="notes">
+                    <ul>
+                        <li>Könnt hier die Slides anschauen, falls interessant auch im Nachgang</li>
+                    </ul>
+                </aside>
             </section>
 
             <!-- DANKE -->
