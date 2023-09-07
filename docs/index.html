@@ -19,6 +19,11 @@
 <div class="reveal">
     <div class="slides">
 
+        <!-- SOKO TITLE -->
+        <section data-background="./img/soko-title.png"
+                 data-background-size="contain">
+        </section>
+
         <!-- TITLE PAGE -->
         <section data-background-image="./themes/Pattern-11-outline.svg"
                  data-background-size="400px"
@@ -144,7 +149,9 @@
                     <ul>
                         <li>Platform, die mir alles zum Bereitstellen meiner Anwendungen bietet</li>
                         <li>Oftmals direkt Gedanke: public cloud / auch private cloud möglich</li>
-                        <li>Kerngedanke: Ich beschäftige mich nur mit den Dingen, die für meine Entwicklung wirklich relevant sind</li>
+                        <li>Kerngedanke: Ich beschäftige mich nur mit den Dingen, die für meine Entwicklung wirklich
+                            relevant sind
+                        </li>
                     </ul>
                 </aside>
             </section>
@@ -270,6 +277,7 @@
                         <li>Firewall Regeln</li>
                         <li>Port Freigaben</li>
                         <li>Updates machen</li>
+                        <li>Statische Ressourcen</li>
                         <li>Umgebungen?</li>
                     </ul>
                 </div>
@@ -461,7 +469,9 @@
                     <ol>
                         <li>Version Control, ein Repo pro App, separate Commit History</li>
                         <li>Zuerst die API designen, alle Services via API verfügbar</li>
-                        <li>Diskrete Schritte, Design à la API First, Technisch Release und Run getrennt, Reproduzierbar</li>
+                        <li>Diskrete Schritte, Design à la API First, Technisch Release und Run getrennt,
+                            Reproduzierbar
+                        </li>
                         <li>Beispiel: Datenbank ist kein enger Teil der Anwendung, ausschließlich über URL reingereicht
                         </li>
                         <li>Gleiche Umgebungen sind einfach, das sollte man auch ausnutzen: Parität =>
@@ -486,7 +496,6 @@
                             <li>Administrative Processes</li>
                             <li>Port Binding</li>
                             <li>Stateless Processes</li>
-                            <li>Telemetry</li>
                             <li>Authentication and Authorization</li>
                         </ul>
                     </div>
@@ -523,7 +532,6 @@
                             <li>Administrative Processes</li>
                             <li>Port Binding</li>
                             <li>Stateless Processes</li>
-                            <li>Telemetry</li>
                             <li>Authentication and Authorization</li>
                         </ul>
                     </div>
@@ -534,6 +542,7 @@
                             <li>Logs</li>
                             <li>Concurrency</li>
                             <li>Disposability</li>
+                            <li>Telemetry</li>
                         </ul>
                     </div>
                 </div>
@@ -557,17 +566,30 @@
                  data-background-repeat="repeat"
                  data-background-opacity=".15">
 
+
             <section data-auto-animate=""
                      data-background-image="./themes/Pattern-1-outline.svg"
                      data-background-size="300px"
                      data-background-repeat="repeat"
                      data-background-opacity=".4">
-                <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
-                    <iframe sandbox='allow-scripts allow-same-origin allow-presentation'
-                            allowfullscreen='true' allowtransparency='true' frameborder='0' height='315'
-                            src='https://www.mentimeter.com/app/presentation/al6m3wiyraw27f8hz75sorfnter5f4f4/embed'
-                            style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'
-                            width='420'></iframe>
+                <h3>Room Code: 2129 7245</h3>
+                <img style="margin:auto" src="./img/menti-qr.png">
+            </section>
+
+
+            <section data-auto-animate=""
+                     data-background-image="./themes/Pattern-1-outline.svg"
+                     data-background-size="300px"
+                     data-background-repeat="repeat"
+                     data-background-opacity=".4">
+                <div class="col-span-2">
+                    <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
+                        <iframe sandbox='allow-scripts allow-same-origin allow-presentation'
+                                allowfullscreen='true' allowtransparency='true' frameborder='0' height='315'
+                                src='https://www.mentimeter.com/app/presentation/al6m3wiyraw27f8hz75sorfnter5f4f4/embed'
+                                style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'
+                                width='420'></iframe>
+                    </div>
                 </div>
             </section>
         </section>
@@ -591,7 +613,6 @@
                             <li>Administrative Processes</li>
                             <li>Port Binding</li>
                             <li>Stateless Processes</li>
-                            <li>Telemetry</li>
                             <li>Authentication and Authorization</li>
                         </ul>
                     </div>
@@ -602,6 +623,7 @@
                             <li><a href="#/factor-3">Logs</a></li>
                             <li><a href="#/factor-4">Concurrency</a></li>
                             <li><a href="#/factor-5">Disposability</a></li>
+                            <li><a href="#/factor-6">Telemetry</a></li>
                         </ul>
                     </div>
                 </div>
@@ -621,8 +643,8 @@
             <section id="factor-1" data-auto-animate="">
                 <h2>Configuration, Credentials, Code</h2>
                 <br>
-                <p style="font-style: italic">Treat configuration, credentials, and code as volatile substances that
-                    explode when combined.</p>
+                <p style="font-style: italic">Behandle Konfiguration, Zugangsdaten und Code als würden sie explodieren,
+                    wenn man sie mischt.</p>
                 <br>
                 <aside class="notes">
                     <ol>
@@ -637,15 +659,14 @@
             <section data-auto-animate="">
                 <h2>Configuration, Credentials, Code</h2>
                 <br>
-                <p style="font-style: italic">Treat configuration, credentials, and code as volatile substances that
-                    explode when combined.</p>
+                <p style="font-style: italic">Behandle Konfiguration, Zugangsdaten und Code als würden sie explodieren,
+                    wenn man sie mischt.</p>
                 <br>
-                <p style="font-style: italic">Imagine the consequences of your application’s source code being pushed
-                    publicly.</p>
+                <p style="font-style: italic">Welche Konsequenzen hätte es den Source Code öffentlich zu machen?</p>
                 <br>
                 <aside class="notes">
                     <ol>
-                        <li>Deployment ist einfach, wenn alles im Repo liegt, wäre Repo Zugriff schwierig</li>
+                        <li>Deployment ist einfach, wenn alles im Repo liegt</li>
                         <li>Vertraulichkeit auf Grund von Cloud Aspekten</li>
                     </ol>
                 </aside>
@@ -837,7 +858,7 @@
 
             <section id="factor-4" data-auto-animate="">
                 <h2>Concurrency</h2>
-                <p style="font-style: italic">Adding more concurrency is a<br>simple and reliable operation.</p>
+                <p style="font-style: italic">Mehr Nebenläufigkeit lässt sich einfach und zuverlässig realisieren.</p>
                 <aside class="notes">
                     <ol>
                         <li></li>
@@ -872,7 +893,8 @@
                     <img width="80%" src="./img/concurrency2.svg">
                     <ul>
                         <li>Dynamische Skalierbarkeit</li>
-                        <li>Kosten sparen, wenn ungenutzt</li>
+                        <li>Kosten sparen</li>
+                        <li>Handling von Bottlenecks</li>
                     </ul>
                 </div>
                 <h6><a href="#/factor-overview">Back</a></h6>
@@ -960,7 +982,7 @@
                 <h6 class="text-left"><code>/actuator/health/liveness</code></h6>
                 <div class="boxed code text-left">
                     <small>
-                    <!-- @formatter:off -->
+                        <!-- @formatter:off -->
                     <xmp>
     {
       "status": "UP",
@@ -988,6 +1010,24 @@
 
         </section>
 
+
+        <!-- DEEP DIVE Telemetry -->
+        <section data-background-image="./themes/Pattern-1-outline.svg"
+                 data-background-size="300px"
+                 data-background-repeat="repeat"
+                 data-background-opacity=".15">
+
+            <section id="factor-6">
+                <h2>Telemetry</h2>
+                <h6><a href="#/factor-overview">Back</a></h6>
+                <aside class="notes">
+                    <ol>
+                        <li>Anwendung liegt irgendwo in der Cloud</li>
+                        <li>Woher weiß ich, dass alles okay ist?</li>
+                    </ol>
+                </aside>
+            </section>
+        </section>
 
         <!-- END -->
         <section data-background-image="./themes/Pattern-11-outline.svg"
@@ -1035,9 +1075,9 @@
                      data-background-size="400px"
                      data-background-repeat="repeat"
                      data-background-opacity=".15">
-                <img src="./themes/qr-code.png" width="400px" style="margin: auto;">
+                <img src="./img/qr-code.png" width="500px" style="margin: auto;">
                 <br>
-                <h5>ppi-x.gitlabpages.ppidev.net</br>/talks/soko-23-rock-paper-scissors</h5>
+                <h5>crossnative.github.io/soko-rps</h5>
                 <aside class="notes">
                     <ul>
                         <li>Könnt hier die Slides anschauen, falls interessant auch im Nachgang</li>
@@ -1052,6 +1092,11 @@
                      data-background-opacity=".4">
                 <img style="scale: 100%; margin: auto;" src="./themes/dilbert_transparent.png"/>
             </section>
+        </section>
+
+        <!-- SOKO END -->
+        <section data-background="./img/soko-end.png"
+                 data-background-size="contain">
         </section>
 
     </div>
