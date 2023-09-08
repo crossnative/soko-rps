@@ -24,6 +24,7 @@
                  data-background-size="contain">
         </section>
 
+
         <!-- TITLE PAGE -->
         <section data-background-image="./themes/Pattern-11-outline.svg"
                  data-background-size="400px"
@@ -36,15 +37,19 @@
                     <li>Titel: Näher bringen was es bedeutet cloud-native zu sein</li>
                     <li>Laufbeispiel einer Rock, Paper, Scissors Anwendung</li>
                     <li>Fragen gern zwischendurch</li>
+                    <li>Sicher auch auf Punkte kommen, die im Projekt aufkamen</li>
+                    <li>Erzählt auch gern ein wenig, wie ihr bestimmte Faktoren umgesetzt habt</li>
                 </ul>
             </aside>
         </section>
+
 
         <!-- PERSONS -->
         <section data-background-image="./themes/Pattern-11-outline.svg"
                  data-background-size="400px"
                  data-background-repeat="repeat"
-                 data-background-opacity=".15">
+                 data-background-opacity=".15"
+                 data-visibility="hidden">
             <div class="grid grid-cols-3 gap-1 text-left">
                 <div style="margin-left: auto; margin-right: 2rem">
                     <img
@@ -117,6 +122,7 @@
                 <aside class="notes">
                     <ul>
                         <li>Im Titel kam cloud-native vor - was heißt denn das?</li>
+                        <li>Manche wissen das sicher, einige noch nicht</li>
                     </ul>
                 </aside>
             </section>
@@ -126,6 +132,7 @@
                 <aside class="notes">
                     <ul>
                         <li>Was meinen wir denn, wenn wir Cloud sagen?</li>
+                        <li>In welchem Umfeld bewegen wir uns?</li>
                     </ul>
                 </aside>
             </section>
@@ -149,9 +156,10 @@
                     <ul>
                         <li>Platform, die mir alles zum Bereitstellen meiner Anwendungen bietet</li>
                         <li>Oftmals direkt Gedanke: public cloud / auch private cloud möglich</li>
+                        <li>Auch nur privat intern möglich</li>
                         <li>Kerngedanke: Ich beschäftige mich nur mit den Dingen, die für meine Entwicklung wirklich
-                            relevant sind
-                        </li>
+                            relevant sind</li>
+                        <li>Abgeben von Verantwortung an andere</li>
                     </ul>
                 </aside>
             </section>
@@ -195,9 +203,8 @@
                 <h1>Warum cloud-native?</h1>
                 <aside class="notes">
                     <ul>
-                        <li>Verstanden was Cloud und cloud-native ist, warum soll mich das interessieren?</li>
-                        <li>Noch nicht verstanden was meine Anwendung geeignet macht</li>
                         <li>Warum sollte mich das interessieren?</li>
+                        <li>Was gewinne ich dadurch in die Cloud zu gehen?</li>
                     </ul>
                 </aside>
             </section>
@@ -218,7 +225,7 @@
 
             <section data-auto-animate>
                 <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
-                <img src="./img/rps-no-cloud.svg">
+                <img class="fragment" src="./img/rps-no-cloud.svg">
             </section>
 
             <section data-auto-animate>
@@ -227,89 +234,26 @@
                     <img src="./img/rps-no-cloud.svg">
                     <ul>
                         <li>Server / Hardware</li>
-                        <li>Netzwerk Grenzen</li>
-                    </ul>
-                </div>
-                <aside class="notes">
-                    <ul>
-                        <li>Auf welchem Server läuft meine Anwendung?</li>
-                        <li>Wo soll die Datenbank laufen</li>
-                        <li>Eigene Hardware: Was passiert bei Ausfällen?</li>
-                        <li>Wer/ Wann macht Datenbank Backups</li>
-                        <li>Wie kommt meine Anwendung auf den Server?</li>
-                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
-                        <li>Wie realisiere ich unterschiedliche Umgebungen? Dev, Test, Prod?</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section data-auto-animate>
-                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
-                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
-                    <img src="./img/rps-no-cloud.svg">
-                    <ul>
-                        <li>Server / Hardware</li>
-                        <li>Netzwerk Grenzen</li>
-                        <li>Firewall Regeln</li>
-                        <li>Port Freigaben</li>
-                    </ul>
-                </div>
-                <aside class="notes">
-                    <ul>
-                        <li>Auf welchem Server läuft meine Anwendung?</li>
-                        <li>Wo soll die Datenbank laufen</li>
-                        <li>Eigene Hardware: Was passiert bei Ausfällen?</li>
-                        <li>Wer/ Wann macht Datenbank Backups</li>
-                        <li>Wie kommt meine Anwendung auf den Server?</li>
-                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
-                        <li>Wie realisiere ich unterschiedliche Umgebungen? Dev, Test, Prod?</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section data-auto-animate>
-                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
-                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
-                    <img src="./img/rps-no-cloud.svg">
-                    <ul>
-                        <li>Server / Hardware</li>
-                        <li>Netzwerk Grenzen</li>
-                        <li>Firewall Regeln</li>
-                        <li>Port Freigaben</li>
-                        <li>Updates machen</li>
-                        <li>Statische Ressourcen</li>
-                        <li>Umgebungen?</li>
-                    </ul>
-                </div>
-                <aside class="notes">
-                    <ul>
-                        <li>Auf welchem Server läuft meine Anwendung?</li>
-                        <li>Wo soll die Datenbank laufen</li>
-                        <li>Eigene Hardware: Was passiert bei Ausfällen?</li>
-                        <li>Wer/ Wann macht Datenbank Backups</li>
-                        <li>Wie kommt meine Anwendung auf den Server?</li>
-                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
-                        <li>Wie realisiere ich unterschiedliche Umgebungen? Dev, Test, Prod?</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section data-auto-animate>
-                <h2>Wie sieht das Deployment<br>ohne Cloud aus?</h2>
-                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
-                    <img src="./img/rps-no-cloud.svg">
-                    <ul>
-                        <li>Server / Hardware</li>
-                        <li>Netzwerk Grenzen</li>
-                        <li>Firewall Regeln</li>
-                        <li>Port Freigaben</li>
-                        <li>Updates machen</li>
-                        <li>Statische Ressourcen</li>
-                        <li>Umgebungen?</li>
+                        <li class="fragment">Netzwerk</li>
+                        <li class="fragment">Port Freigaben</li>
+                        <li class="fragment">Betriebssystem / Updates</li>
+                        <li class="fragment">Ressourcen</li>
+                        <li class="fragment">Umgebungen?</li>
                     </ul>
                 </div>
                 <br>
-                <h4 class="native-cyber-yellow">Was ist mit der eigentlichen Anwendung?</h4>
+                <h4 class="fragment native-cyber-yellow">Was ist mit der eigentlichen Anwendung?</h4>
+                <aside class="notes">
+                    <ul>
+                        <li>Auf welchem Server läuft meine Anwendung?</li>
+                        <li>Wo soll die Datenbank laufen</li>
+                        <li>Eigene Hardware: Was passiert bei Ausfällen?</li>
+                        <li>DNS Einträge, Firewall, Netzwerk Sicherheits Richtlinien</li>
+                        <li>Wie kommt meine Anwendung auf den Server?</li>
+                        <li>Markt hat sich verändert: hohe Ansprüche an Verfügbarkeit/Robustheit</li>
+                        <li>Wie realisiere ich unterschiedliche Umgebungen? Dev, Test, Prod?</li>
+                    </ul>
+                </aside>
             </section>
 
             <section data-auto-animate="">
@@ -322,13 +266,9 @@
                 </aside>
             </section>
 
-            <section data-auto-animate="">
-                <h2>Wie sieht das Deployment<br>in der Cloud aus?</h2>
-            </section>
-
             <section data-auto-animate>
                 <h2>Wie sieht das Deployment<br>in der Cloud aus?</h2>
-                <img src="./img/rps-cloud.svg">
+                <img class="fragment" src="./img/rps-cloud.svg">
                 <aside class="notes">
                     <ul>
                         <li>Server Infrastruktur drum herum wird mir abgenommen</li>
@@ -336,30 +276,8 @@
                         <li>Sogar die Datenbank als Container</li>
                         <li>Updates egal, Hardware egal</li>
                         <li>Schnelles initiales Deployment</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section data-auto-animate>
-                <h2>Wie sieht das Deployment<br>in der Cloud aus?</h2>
-                <div class="grid grid-cols-2 gap-1 content-start" style="font-size: 70%;">
-                    <img src="./img/rps-cloud.svg">
-                    <ul>
-                        <li>Fokus auf Anwendung</li>
-                        <li>Skalierbarkeit</li>
-                        <li>Resilienz</li>
-                        <li>Kurze Time-to-Market</li>
-                        <li>Robustheit</li>
-                        <li>Sicherheit</li>
-                    </ul>
-                </div>
-                <aside class="notes">
-                    <ul>
-                        <li>Schnelles initiales Hosten, als auch Updates</li>
                         <li>Anwendung als Image verpackt</li>
                         <li>Geringe Downtimes</li>
-                        <li>Verantwortungen der Platform abgegeben</li>
-                        <li>Ich muss mich nicht um Updates kümmern</li>
                     </ul>
                 </aside>
             </section>
@@ -370,17 +288,23 @@
                     <img src="./img/rps-cloud.svg">
                     <ul>
                         <li>Fokus auf Anwendung</li>
-                        <li>Skalierbarkeit</li>
-                        <li>Resilienz</li>
-                        <li>Kurze Time-to-Market</li>
-                        <li>Robustheit</li>
-                        <li>Sicherheit</li>
+                        <li class="fragment">Skalierbarkeit</li>
+                        <li class="fragment">Resilienz</li>
+                        <li class="fragment">Robustheit</li>
+                        <li class="fragment">Sicherheit</li>
+                        <li class="fragment">Kurze Time-to-Market</li>
                     </ul>
                 </div>
                 <br>
-                <h4 class="native-cyber-yellow">... keine Besonderheit mehr sondern normal</h4>
+                <h4 class="fragment native-cyber-yellow">... keine Besonderheit mehr sondern normal</h4>
                 <aside class="notes">
                     <ul>
+                        <li>Schneler um Anwendung selbst kümmern</li>
+                        <li>Dynamisch mehr Ressourcen zuweisen</li>
+                        <li>Erholt sich von Fehlern</li>
+                        <li>Funktioniert auch unter schweren Bedingungen</li>
+                        <li>Automatische Aktualisierungen</li>
+                        <li>Hoher Grad der möglichen Automatisierbarkeit</li>
                     </ul>
                 </aside>
             </section>
@@ -406,38 +330,21 @@
                 <h1>Cloud-native </br> in der Entwicklung</h1>
                 <h4>
                     2012 -
-                    <a href="https://12factor.net/de/">
-                        The Twelve Factor App
-                    </a>
+                    <a href="https://12factor.net/de/">The Twelve Factor App</a>
                 </h4>
-                </br>
+                <br>
+                <h4 class="fragment">
+                    2016 -
+                    <a href="https://tanzu.vmware.com/content/blog/beyond-the-twelve-factor-app">Beyond the Twelve
+                        Factor App</a>
+                </h4>
                 <aside class="notes">
                     <ul>
                         <li>Gruppe von Leuten aus Heroku</li>
                         <li>Festlegen von Standards/Pattern für die Entwicklung</li>
                         <li>Festlegen von Bedeutungen für Worte</li>
                         <li>Weitergabe von Best Practices</li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section data-auto-animate="">
-                <h1>Cloud-native </br> in der Entwicklung</h1>
-                <h4>
-                    2012 -
-                    <a href="https://12factor.net/de/">
-                        The Twelve Factor App
-                    </a>
-                </h4>
-                </br>
-                <h4>
-                    2016 -
-                    <a href="https://tanzu.vmware.com/content/blog/beyond-the-twelve-factor-app">
-                        Beyond the Twelve Factor App
-                    </a>
-                </h4>
-                <aside class="notes">
-                    <ul>
+                        <br>
                         <li>Weiterentwicklung von Frameworks: Ausformulierung bestimmter Punkte</li>
                         <li>Hinzunahme weiterer Punkte</li>
                         <li>Heißen nicht, dass sie in anderen Anwendungen nicht relevant sind</li>
@@ -452,16 +359,20 @@
                 <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
                     <div class="col-span-6">
                         <ul>
-                            <li>One Codebase, One App</li>
-                            <li>API First</li>
-                            <li>Design, Build, Release, Run</li>
-                            <li>Backing Services</li>
-                            <li>Environment Parity</li>
-                            <li>...</li>
+                            <li class="fragment">One Codebase, One App</li>
+                            <li class="fragment">API First</li>
+                            <li class="fragment">Design, Build, Release, Run</li>
+                            <li class="fragment">Backing Services</li>
+                            <li class="fragment">Environment Parity</li>
+                            <li class="fragment">Administrative Processes</li>
+                            <li class="fragment">Port Binding</li>
+                            <li class="fragment">Stateless Processes</li>
+                            <li class="fragment">Authentication and Authorization</li>
                         </ul>
                     </div>
                     <div class="col-span-6">
                         <ul start="8">
+                            <li class="fragment">...</li>
                         </ul>
                     </div>
                 </div>
@@ -477,36 +388,6 @@
                         <li>Gleiche Umgebungen sind einfach, das sollte man auch ausnutzen: Parität =>
                             Reproduzierbarkeit => Verfügbarkeit
                         </li>
-                        </li>
-                    </ol>
-                </aside>
-            </section>
-
-
-            <section data-auto-animate="">
-                <h2>The 12-Factor-App <small>and Beyond</small></h2>
-                <div class="grid grid-cols-12 gap-1 content-start" style="font-size: 70%;">
-                    <div class="col-span-6">
-                        <ul>
-                            <li>One Codebase, One App</li>
-                            <li>API First</li>
-                            <li>Design, Build, Release, Run</li>
-                            <li>Backing Services</li>
-                            <li>Environment Parity</li>
-                            <li>Administrative Processes</li>
-                            <li>Port Binding</li>
-                            <li>Stateless Processes</li>
-                            <li>Authentication and Authorization</li>
-                        </ul>
-                    </div>
-                    <div class="col-span-6">
-                        <ul start="8">
-                            <li>...</li>
-                        </ul>
-                    </div>
-                </div>
-                <aside class="notes">
-                    <ol>
                         <li>Kann mich nicht auf meine Pods connecten, könnten jederzeit weg sein</li>
                         <li>Cloud bestimmt welcher Port tatsächlich zugewiesen wird, kann auch variieren</li>
                         <li>Anwendung muss zustandslos sein, denn sie kann jederzeit neugestartet werden, keine
@@ -560,6 +441,7 @@
 
         </section>
 
+
         <!-- VOTING -->
         <section data-background-image="./themes/Pattern-1-outline.svg"
                  data-background-size="300px"
@@ -572,7 +454,8 @@
                      data-background-size="300px"
                      data-background-repeat="repeat"
                      data-background-opacity=".4">
-                <h3>Room Code: 2129 7245</h3>
+                <h3>menti.com</h3>
+                <h3>2129 7245</h3>
                 <img style="margin:auto" src="./img/menti-qr.png">
             </section>
 
@@ -593,6 +476,7 @@
                 </div>
             </section>
         </section>
+
 
         <!-- DEEP DIVE -->
         <section data-background-image="./themes/Pattern-1-outline.svg"
@@ -633,7 +517,6 @@
 
         </section>
 
-
         <!-- DEEP DIVE Configuration Credential Code -->
         <section data-background-image="./themes/Pattern-1-outline.svg"
                  data-background-size="300px"
@@ -643,31 +526,20 @@
             <section id="factor-1" data-auto-animate="">
                 <h2>Configuration, Credentials, Code</h2>
                 <br>
-                <p style="font-style: italic">Behandle Konfiguration, Zugangsdaten und Code als würden sie explodieren,
-                    wenn man sie mischt.</p>
+                <p class="fragment" style="font-style: italic">Behandle Konfiguration, Zugangsdaten und Code als würden sie explodieren,
+                    wenn man sie mischt.<br><small>- Beyond Twelve Factors</small></p>
+                <br>
+                <p class="fragment"style="font-style: italic">Welche Konsequenzen hätte es den Source Code öffentlich zu machen?<br><small>- Beyond Twelve Factors</small></p>
                 <br>
                 <aside class="notes">
                     <ol>
                         <li>In Cloud, möglicherweise mehrere Deployments: muss einfach sein</li>
                         <li>Erlaubt es einfacher neue Umgebungen hochzuziehen (nur neue Konfiguration)</li>
-                        <li>Konfiguration ist alles, was zwischen Deployments anders sein kann</li>
+                        <li>Konfiguration kann geändert werden ohne Code Änderungen</li>
+                        <li>Testing</li>
                         <li>Verhindert Konfiguration eng in die Anwendung zu weben</li>
                         <li>Gleiche Builds auf unterschiedliche Umgebungen</li>
-                    </ol>
-                </aside>
-            </section>
-            <section data-auto-animate="">
-                <h2>Configuration, Credentials, Code</h2>
-                <br>
-                <p style="font-style: italic">Behandle Konfiguration, Zugangsdaten und Code als würden sie explodieren,
-                    wenn man sie mischt.</p>
-                <br>
-                <p style="font-style: italic">Welche Konsequenzen hätte es den Source Code öffentlich zu machen?</p>
-                <br>
-                <aside class="notes">
-                    <ol>
-                        <li>Deployment ist einfach, wenn alles im Repo liegt</li>
-                        <li>Vertraulichkeit auf Grund von Cloud Aspekten</li>
+                        <li>Nicht aus versehen Credentials leaken</li>
                     </ol>
                 </aside>
             </section>
@@ -715,8 +587,8 @@
             <section id="factor-2" data-auto-animate="">
                 <h2>Dependency Management</h2>
                 <ul>
-                    <li>Abhängigkeiten explizit ausdrücken</li>
-                    <li>Keine Annahmen zu Abhängigkeiten treffen</li>
+                    <li class="fragment">Abhängigkeiten explizit ausdrücken</li>
+                    <li class="fragment">Keine Annahmen zu Abhängigkeiten treffen</li>
                 </ul>
                 <aside class="notes">
                     <ol>
@@ -749,40 +621,12 @@
                         <!-- @formatter:on -->
                     </small>
                 </div>
-            </section>
-            <section data-auto-animate="">
-                <h2>Dependency Management</h2>
-                <h6 class="text-left"><code>pom.xml</code></h6>
-                <div class="boxed code text-left">
-                    <small>
-                        <!-- @formatter:off -->
-                        <xmp>
-    ...
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        ...
-    </dependencies>
-    ...
-                        </xmp>
-                        <!-- @formatter:on -->
-                    </small>
-                </div>
-                <code class="text-left"><small>&gt; mvn clean install</small></code>
+                <code class="fragment text-left"><small>&gt; mvn clean install</small></code>
                 <br>
-                <h6><a href="#/factor-overview">Back</a></h6>
-                <aside class="notes">
-                    <ol>
-                        <li>Alle dependencies werden geladen</li>
-                        <li>Darauf aufbauen dann beispielsweise auch Docker Images</li>
-                    </ol>
-                </aside>
+                <h6 class="fragment"><a href="#/factor-overview">Back</a></h6>
             </section>
 
         </section>
-
 
         <!-- DEEP DIVE Logs -->
         <section data-background-image="./themes/Pattern-1-outline.svg"
@@ -792,31 +636,16 @@
 
             <section id="factor-3" data-auto-animate="">
                 <h2>Logs</h2>
+                <p class="fragment">Keine Annahmen über Dateisystem!</p>
+                <p class="fragment native-cyber-yellow">→ Logs sind zeitlich geordnete Event Streams</p>
                 <aside class="notes">
-                    <ol>
-                        <li>Wo ist denn das Problem? Natürlich brauchen wir Logs</li>
+                    <ul>
+                        <li>Wo ist denn das Problem? Natürlich brauchen wir Logs</li><br>
                         <li>Normalerweise File Rolling, Location</li>
-                    </ol>
-                </aside>
-            </section>
-            <section data-auto-animate="">
-                <h2>Logs</h2>
-                <p>Keine Annahmen über Dateisystem!</p>
-                <aside class="notes">
-                    <ol>
-                        <li>Anwendung kann jederzeit herunterfahren</li>
-                    </ol>
-                </aside>
-            </section>
-            <section data-auto-animate="">
-                <h2>Logs</h2>
-                <p>Keine Annahmen über Dateisystem!</p>
-                <p class="native-cyber-yellow">→ Logs sind zeitlich geordnete Event Streams</p>
-                <aside class="notes">
-                    <ol>
+                        <li>Anwendung kann jederzeit herunterfahren</li><br>
                         <li>Cloud übernimmt Routing und Speicherung des Output Streams</li>
                         <li>Aggregation, Processierung und Speicherung sind nicht-funktionale Anforderungen</li>
-                    </ol>
+                    </ul>
                 </aside>
             </section>
             <section data-auto-animate="">
@@ -836,7 +665,7 @@
                 </aside>
             </section>
             <section data-auto-animate="">
-                <h5 class="text-left">Beispiel Google Cloud</h5>
+                <h5>Beispiel Google Cloud</h5>
                 <img width="80%" src="./img/google-logs.png">
                 <h6><a href="#/factor-overview">Back</a></h6>
                 <aside class="notes">
@@ -849,7 +678,6 @@
 
         </section>
 
-
         <!-- DEEP DIVE Concurrency -->
         <section data-background-image="./themes/Pattern-1-outline.svg"
                  data-background-size="300px"
@@ -858,12 +686,13 @@
 
             <section id="factor-4" data-auto-animate="">
                 <h2>Concurrency</h2>
-                <p style="font-style: italic">Mehr Nebenläufigkeit lässt sich einfach und zuverlässig realisieren.</p>
+                <p style="font-style: italic">Mehr Nebenläufigkeit ist immer eine zuverlässige Option.<br><small>- Beyond Twelve Factors</small></p>
+
                 <aside class="notes">
-                    <ol>
-                        <li></li>
+                    <ul>
+                        <li>Ist ein wenig lachs übersetzt</li>
                         <li>Wegen Zustandlosen Prozessen: einfach mehrere Instanzen/ kein Zustand</li>
-                    </ol>
+                    </ul>
                 </aside>
             </section>
             <section data-auto-animate="">
@@ -892,12 +721,12 @@
                 <div class="grid grid-cols-2" style="font-size: 70%;">
                     <img width="80%" src="./img/concurrency2.svg">
                     <ul>
-                        <li>Dynamische Skalierbarkeit</li>
-                        <li>Kosten sparen</li>
-                        <li>Handling von Bottlenecks</li>
+                        <li>Dynamische Skalierbarkeit
+                        <li class="fragment">Handling von Bottlenecks</li>
+                        <li class="fragment">Kosten sparen</li>
                     </ul>
                 </div>
-                <h6><a href="#/factor-overview">Back</a></h6>
+                <h6 class="fragment"><a href="#/factor-overview">Back</a></h6>
                 <aside class="notes">
                     <ol>
                         <li>Vertical Skalieren: Mehrere Instanzen</li>
@@ -910,42 +739,30 @@
             </section>
         </section>
 
-
         <!-- DEEP DIVE Disposability -->
         <section data-background-image="./themes/Pattern-1-outline.svg"
                  data-background-size="300px"
                  data-background-repeat="repeat"
                  data-background-opacity=".15">
 
-            <section id="factor-5">
+            <section id="factor-5" data-auto-animate="">
                 <h2>Disposability</h2>
-                <aside class="notes">
-                    <ol>
-                        <li>Jederzeit gestartet und gestopped</li>
-                        <li>Kurze Startups sind sehr relevant</li>
-                        <li>Wann ist meine Anwendung bereit Requests entgegen zu nehmen?</li>
-                    </ol>
-                </aside>
-            </section>
-            <section data-auto-animate="">
-                <h2>Disposability</h2>
-                <p>Wann ist meine Anwendung bereit Requests<br>entgegen zu nehmen?</p>
-            </section>
-            <section data-auto-animate="">
-                <h2>Disposability</h2>
-                <p>Wann ist meine Anwendung bereit Requests<br>entgegen zu nehmen?</p>
-                <ul>
+                <p class="fragment">Wann ist meine Anwendung bereit Requests<br>entgegen zu nehmen?</p>
+                <ul class="fragment">
                     <li>Liveness</li>
                     <li>Readiness</li>
                 </ul>
                 <aside class="notes">
-                    <ol>
+                    <ul>
+                        <li>Jederzeit gestartet und gestopped</li>
+                        <li>Kurze Startups sind sehr relevant</li>
+                        <li>Wann ist meine Anwendung bereit Requests entgegen zu nehmen?</li><br>
                         <li>Liveness: Anwendung ist kaputt: neustarten</li>
                         <li>Resilienz</li>
                         <li>Direkt am Beispiel Kubernetes erklären</li>
                         <li>Readiness: Anwendung nimmt Requests entgegen</li>
                         <li>Datenbank ist weg, Readiness ist okay, Liveness ist okay</li>
-                    </ol>
+                    </ul>
                 </aside>
             </section>
             <section data-auto-animate="">
@@ -972,6 +789,8 @@
                     <code>management.health.readinessState.enabled=true</code></small>
                 <aside class="notes">
                     <ol>
+                        <li>Actuator: Eine Sache, die etwas antreibt: ein mechanisches Gerät, um etwas zu bewegen oder zu kontrollieren</li>
+                        <li><li>Monitoren der App, Umsystemen oder Metriken sammeln</li></li>
                         <li>Liveness: Restarted den Container</li>
                         <li>Readiness: App wird keinen Traffic mehr serven</li>
                     </ol>
@@ -979,18 +798,32 @@
             </section>
             <section data-auto-animate="">
                 <h2>Disposability</h2>
-                <h6 class="text-left"><code>/actuator/health/liveness</code></h6>
+                <h6 class="text-left"><code>/actuator/health</code></h6>
                 <div class="boxed code text-left">
                     <small>
                         <!-- @formatter:off -->
                     <xmp>
     {
-      "status": "UP",
-      "components": {
-        "livenessstate": {
-          "status": "UP"
-        }
-      }
+        "status": "UP",
+        "components": {
+            "diskSpace": {
+                "status": "UP",
+                "details": {}
+            },
+            "livenessState": {
+                "status": "UP"
+            },
+            "ping": {
+                "status": "UP"
+            },
+            "readinessState": {
+                "status": "UP"
+            }
+        },
+        "groups": [
+            "liveness",
+            "readiness"
+        ]
     }
                     </xmp>
                     <!-- @formatter:on -->
@@ -1010,7 +843,6 @@
 
         </section>
 
-
         <!-- DEEP DIVE Telemetry -->
         <section data-background-image="./themes/Pattern-1-outline.svg"
                  data-background-size="300px"
@@ -1019,15 +851,91 @@
 
             <section id="factor-6">
                 <h2>Telemetry</h2>
-                <h6><a href="#/factor-overview">Back</a></h6>
+                <img class="fragment" src="./img/telemetry.svg">
                 <aside class="notes">
-                    <ol>
+                    <ul>
                         <li>Anwendung liegt irgendwo in der Cloud</li>
+                        <li>Viel weiter weg als Server im Keller</li>
                         <li>Woher weiß ich, dass alles okay ist?</li>
-                    </ol>
+                        <li>Irgendwie müssen Sonden installiert werden</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h4 class="text-left">Spring Actuator</h4>
+                <div class="boxed code text-left">
+                    <small>
+                        <!-- @formatter:off -->
+                        <xmp>
+                            ...
+                            <dependency>
+                                <groupId>org.springframework.boot</groupId>
+                                <artifactId>spring-boot-starter-actuator</artifactId>
+                            </dependency>
+                            <dependency>
+                                <groupId>io.micrometer</groupId>
+                                <artifactId>micrometer-registry-prometheus</artifactId>
+                            </dependency>
+                            ...
+                        </xmp>
+                        <!-- @formatter:on -->
+                    </small>
+                </div>
+                <aside class="notes">
+                    <ul>
+                        <li>Actuator: Eine Sache, die etwas antreibt: ein mechanisches Gerät, um etwas zu bewegen oder zu kontrollieren</li>
+                        <li><li>Monitoren der App, Umsystemen oder Metriken sammeln</li></li>
+                        <li>Spring Actuator: mechanical device for moving or controlling something</li>
+                        <li>Monitoren der App, Umsystemen oder Metriken sammeln</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h6 class="text-left"><code>/actuator/prometheus</code></h6>
+                <div class="boxed code text-left">
+                    <small>
+                        <!-- @formatter:off -->
+                        <xmp>
+    # HELP jvm_buffer_total_capacity_bytes An estimate of the total capacity of the buffers in this pool
+    # TYPE jvm_buffer_total_capacity_bytes gauge
+    jvm_buffer_total_capacity_bytes{id="mapped - 'non-volatile memory'",} 0.0
+    jvm_buffer_total_capacity_bytes{id="mapped",} 0.0
+    jvm_buffer_total_capacity_bytes{id="direct",} 1.8419719E7
+    # HELP jvm_memory_max_bytes The maximum amount of memory in bytes that can be used for memory management
+    # TYPE jvm_memory_max_bytes gauge
+    jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'profiled nmethods'",} 1.21729024E8
+    jvm_memory_max_bytes{area="heap",id="G1 Survivor Space",} -1.0
+    jvm_memory_max_bytes{area="heap",id="G1 Old Gen",} 1.073741824E9
+    jvm_memory_max_bytes{area="nonheap",id="Metaspace",} -1.0
+    jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'non-nmethods'",} 8196096.0
+    jvm_memory_max_bytes{area="heap",id="G1 Eden Space",} -1.0
+    jvm_memory_max_bytes{area="nonheap",id="Compressed Class Space",} 1.073741824E9
+    jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'non-profiled nmethods'",} 1.2173312E8
+    ...
+                        </xmp>
+                        <!-- @formatter:on -->
+                    </small>
+                </div>
+            </section>
+
+            <section>
+                <img src="./img/prometheus.svg">
+                <h6 class="fragment"><br><a href="#/factor-overview">Back</a></h6>
+                <aside class="notes">
+                    <ul>
+                        <li>Anweundung bietet über Actuator bereits Endpunkte</li>
+                        <li>Prometheus kann diese regelmäßig abholen, Intevall konfigurierbar</li>
+                        <li>zeitlich geordnete Datenbank</li>
+                        <li>Gibt auch push-based, insbesondere für short-lived jobs</li>
+                        <li>Grafana zur Visualisierung</li>
+                        <li>Warum pull-based? Selbst kontrollieren, wie oft man etwas empfangen möchte + Fehlerfall</li>
+                    </ul>
                 </aside>
             </section>
         </section>
+
 
         <!-- END -->
         <section data-background-image="./themes/Pattern-11-outline.svg"
@@ -1042,10 +950,6 @@
                      data-background-opacity=".4"
                      data-auto-animate="">
                 <h1>Fazit</h1>
-                <ul>
-                    <li>Was ist cloud-native?</li>
-                    <li>Warum sollte mich das interessieren?</li>
-                </ul>
             </section>
 
             <section data-auto-animate="">
@@ -1054,19 +958,9 @@
                     <li>Was ist cloud-native?</li>
                     <li>Warum sollte mich das interessieren?</li>
                     <br>
-                    <li>Twelve Factor App / Beyond Twelve Factor</li>
-                </ul>
-            </section>
-
-            <section data-auto-animate="">
-                <h1>Fazit</h1>
-                <ul>
-                    <li>Was ist cloud-native?</li>
-                    <li>Warum sollte mich das interessieren?</li>
+                    <li class="fragment">Twelve Factor App / Beyond Twelve Factor</li>
                     <br>
-                    <li>Twelve Factor App / Beyond Twelve Factor</li>
-                    <br>
-                    <li>Was ist bei der Entwicklung zu beachten?</li>
+                    <li class="fragment">Was ist bei der Entwicklung zu beachten?</li>
                 </ul>
             </section>
 
@@ -1093,6 +987,7 @@
                 <img style="scale: 100%; margin: auto;" src="./themes/dilbert_transparent.png"/>
             </section>
         </section>
+
 
         <!-- SOKO END -->
         <section data-background="./img/soko-end.png"
